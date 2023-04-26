@@ -390,28 +390,29 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'ADMINISTRADOR'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
+            'text'       => 'Usuarios',
+            'icon_color' => 'blue',
             'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Visitas',
-            'icon_color' => 'cyan',
-            'route'        => 'visita.index',
             'icon' => 'fas fa fa-users'
         ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+        // [
+        //     'text'       => 'warning',
+        //     'icon_color' => 'yellow',
+        //     'url'        => '#',
+        // ],
+         [
+             'text'       => 'Visitas',
+             'icon_color' => 'cyan',
+             'route'        => 'visita.index',
+             'icon' => 'fas fa fa-users'
         ],
+        // [
+        //     'text'       => 'information',
+        //     'icon_color' => 'cyan',
+        //     'url'        => '#',
+        // ],
     ],
 
     /*
