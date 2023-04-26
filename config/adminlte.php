@@ -374,7 +374,7 @@ return [
         // ],
         [
             'text'    => 'Registro de Visitas',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa fa-users',
             'submenu' => [
                 [
                     'text' => 'Lista de visitas',
