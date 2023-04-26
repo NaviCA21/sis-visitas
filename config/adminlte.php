@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Sistema Visitas',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -377,6 +377,12 @@ return [
             'text'       => 'warning',
             'icon_color' => 'yellow',
             'url'        => '#',
+        ],
+        [
+            'text'       => 'Visitas',
+            'icon_color' => 'cyan',
+            'route'        => 'visita.index',
+            'icon' => 'fas fa fa-users'
         ],
         [
             'text'       => 'information',
