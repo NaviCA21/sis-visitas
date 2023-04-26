@@ -324,11 +324,11 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -363,6 +363,29 @@ return [
                 ],
                 [
                     'text' => 'level_one',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
+        [
+            'text'    => 'Registro de Visitas',
+            'icon'    => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Lista de visitas',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Visitas culminadas',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Visitas canceladas',
                     'url'  => '#',
                 ],
             ],
