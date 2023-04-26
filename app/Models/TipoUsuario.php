@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TipoUsuario extends Model
 {
     use HasFactory;
+    //relacion uno a muchos
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

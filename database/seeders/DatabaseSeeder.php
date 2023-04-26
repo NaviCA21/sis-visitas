@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TipoUsuario;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,38 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        
+        $tipoUsuarioAdmin = \App\Models\TipoUsuario::create([
+
+            'tipo_usuario' => 'Administrador'
+        ]);
+
+        $tipoUsuarioRegular = \App\Models\TipoUsuario::create([
+            'tipo_usuario' => 'Usuario'
+        ]);
+
+        $user1 = \App\Models\User::factory()->create([
+            'name' => 'Usuario',
+            'cargo' => 'secretaria',
+            'email' => 'usuario@gmail.com',
+            'password' => bcrypt('usuario'),
+            'tipo_usuario_id' => 2,
+        ]);
+
+        $user2 = \App\Models\User::factory()->create([
+            'name' => 'Administrador',
+            'cargo' => 'Administrador',
+            'email' => 'administrador@gmail.com',
+            'password' => bcrypt('administrador'),
+            'tipo_usuario_id' => 1,
+        ]);
+
+        $user3 = \App\Models\User::factory()->create([
+            'name' => 'Javier Ponce Roque',
+            'cargo' => 'Alcalde de Puno',
+            'email' => 'javierponce@gmail.com',
+            'password' => bcrypt('administrador'),
+            'tipo_usuario_id' => 1,
+        ]);
+
     }
 }

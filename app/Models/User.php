@@ -41,4 +41,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    //relacion de muchos a uno
+    public function tipoUsuario(){
+        return $this->belongsTo(tipoUsuario::class);
+    }
 }

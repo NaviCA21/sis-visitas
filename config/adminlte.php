@@ -394,7 +394,7 @@ return [
         [
             'text'       => 'Usuarios',
             'icon_color' => 'blue',
-            'url'        => '#',
+            'route'     => 'usuario.index',
             'icon' => 'fas fa fa-users'
         ],
         // [

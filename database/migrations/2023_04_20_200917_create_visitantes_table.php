@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('visitantes', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('a_paterno');
+            $table->string('a_materno');
+            $table->string('dni',8);
+            $table->string('institucion');
+            $table->string('telefono',9);
+            $table->integer('num_visitantes');
+            $table->foreignId('tipo_visitante_id')->references('id')->on('tipo_visitantes')->onDelete('cascade');
             $table->timestamps();
         });
     }
