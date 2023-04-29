@@ -18,6 +18,12 @@ class UserController extends Controller
     }
 
 
+    public function create()
+    {
+        $tipoUsuarios = TipoUsuario::all();
+         return view('auth.register', compact('tipoUsuarios'));
+        //  dd($tipoUsuarios);
+    }
 
     public function store(Request $request)
 {
@@ -36,53 +42,21 @@ class UserController extends Controller
     $user->password = Hash::make($request->password);
     $user->tipo_usuario_id = $request->tipo_usuario; // Asignar el tipo de usuario seleccionado
     $user->save();
+    // dd($user);
 
-    return redirect()->route('admin.admin')->with('success', 'User created successfully.');
+    // enviar correo electrónico de bienvenida
+    // Mail::to($user->email)->send(new WelcomeEmail($user));
+
+    return redirect()->route('usuario.index')->with('success', 'User created successfully.');
+
 }
 
-public function create()
-{
-    $tipo_usuarios = TipoUsuario::all();
-    return view('auth.register', compact('tipo_usuarios'));
-    // dd($tipo_usuarios);
-}
 public function delete(User $user)
 {
     $user->delete();
 
-    return redirect()->route('admin.admin')->with('success', 'Usuario eliminado exitosamente.');
+    return redirect()->route('usuario.index')->with('success', 'Usuario eliminado exitosamente.');
 }
 
-public function edit(User $user)
-{
-     $tipo_usuario = TipoUsuario::all();
-     return view('auth.update', compact('user', 'tipo_usuario'));
- }
-
-
-public function update(Request $request, User $user)
-{
-
-    $user->name = $request->name;
-    $user->cargo = $request->cargo;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->tipo_usuario_id = $request->tipo_usuario; // Asignar el tipo de usuario seleccionado
-    $user->save();
-
-    return redirect()->route('admin.admin')->with('success', 'Usuario actualizado exitosamente.');
 }
 
-// public function update(request $request, User $user)
-// {
-//     // $user=User::findOrfail($id);
-//     $data = $request->only('name', 'cargo', 'email');
-//     $password = $request->Input('password');
-//     if($password)
-//         $data['password'] = bcrypt($password);
-//     $user->tipo_usuario_id = $request->tipo_usuario_id;
-//     $user->update($data);
-//     return redirect()->route('admin.admin');
-
-// }
-}
