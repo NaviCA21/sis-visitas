@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Periodo;
+use App\Models\visitantes;
 use Illuminate\Http\Request;
 
-class PeriodoController extends Controller
+class VisitantesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class PeriodoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Periodo $periodo)
+    public function show(visitantes $visitantes)
     {
         //
     }
@@ -42,7 +42,7 @@ class PeriodoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Periodo $periodo)
+    public function edit(visitantes $visitantes)
     {
         //
     }
@@ -50,7 +50,7 @@ class PeriodoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Periodo $periodo)
+    public function update(Request $request, visitantes $visitantes)
     {
         //
     }
@@ -58,7 +58,7 @@ class PeriodoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Periodo $periodo)
+    public function destroy(visitantes $visitantes)
     {
         //
     }

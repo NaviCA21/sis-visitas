@@ -1,55 +1,123 @@
 @extends('adminlte::page')
 
-@section('content')
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi reiciendis tempora molestiae quisquam, consequatur veniam quam vero labore aperiam impedit unde excepturi, eligendi iusto laborum possimus adipisci totam voluptates cum!
-Hic aliquam eaque tempore dolores at odit, delectus quia cum recusandae adipisci ut modi, officia ratione. Libero exercitationem voluptate, alias eum voluptatum deleniti autem dolorum magnam. Excepturi at eaque alias!
-Reiciendis quis, ab quo quibusdam cupiditate quas rem quasi nemo nisi eum officiis praesentium amet sed sint consectetur animi voluptate eius dolor magnam eos necessitatibus repudiandae. Molestiae necessitatibus corrupti excepturi!
-Excepturi, dignissimos natus numquam suscipit adipisci culpa, alias aliquam molestias quasi velit cum veniam voluptatum mollitia blanditiis rem doloribus odio ut deserunt vel nesciunt pariatur autem? Sunt aliquam a qui.
-Veritatis excepturi odio laborum qui nulla quia, fugiat ratione magnam, cupiditate iusto error, voluptate consectetur odit! Error hic laboriosam quaerat obcaecati facere voluptas qui expedita optio? Beatae veniam exercitationem neque!
-Rerum veniam similique ea ratione blanditiis iste error natus ad, labore quo maiores quaerat impedit, dignissimos soluta obcaecati earum commodi? Numquam dicta voluptatibus necessitatibus ratione repudiandae natus, officiis tempora pariatur.
-Vitae assumenda ipsa rem ullam deserunt tenetur autem ratione dolore doloremque voluptatum quam quidem, ducimus doloribus voluptate. Deserunt eveniet, aliquid maiores, repudiandae quasi asperiores ipsa saepe sint enim repellat exercitationem?
-Minus neque perferendis soluta eum assumenda quia delectus dolorum, doloremque commodi reprehenderit quos libero qui vel nihil, id amet placeat aliquam autem unde itaque non, ea repellendus. Similique, necessitatibus delectus.
-Unde odit commodi a dignissimos aliquid at reiciendis quae reprehenderit. Magnam aut accusamus perferendis illo error aspernatur totam earum. Voluptatibus totam repellendus quidem corrupti dicta sed voluptate aliquam tenetur natus!
-Placeat iure exercitationem nemo, quae, doloribus voluptates dolorem aperiam voluptate laudantium dolorum atque suscipit ducimus officiis. Id voluptatum unde ad, incidunt modi, ipsum aliquam optio repudiandae distinctio, cum libero corrupti!
-Similique asperiores nihil reprehenderit illo, ducimus vel distinctio deleniti vitae, impedit nostrum iure error magnam perspiciatis, voluptatum sunt culpa consequatur fuga. Exercitationem soluta cum provident. Ipsa enim exercitationem ducimus inventore.
-Hic eum libero quas sunt temporibus, earum possimus in quia quod illum iusto reprehenderit, consequatur consequuntur labore nam inventore! Tempore temporibus consectetur qui voluptatibus non doloribus obcaecati. Sequi, nam provident.
-Quasi sequi inventore, nemo possimus provident voluptatum, nobis, iste minima earum quas eum optio dolor consequuntur reprehenderit modi et corrupti vitae? Eum maxime adipisci soluta commodi aliquid! Nobis, velit quo!
-Exercitationem optio omnis eaque! Optio quas, adipisci consequatur quod provident officia labore totam eum, porro aut reprehenderit temporibus, cumque deserunt perspiciatis! Dignissimos fugit nisi odio at molestiae sapiente perspiciatis labore!
-Debitis iusto doloribus voluptates rem. Fuga unde quos voluptatum obcaecati commodi deleniti ab, delectus exercitationem consectetur velit provident amet porro quam perferendis possimus ipsam quidem similique fugit facere libero eveniet!
-Vitae, itaque quas! Corrupti, repellat modi. Expedita ipsa voluptates consequuntur ea enim officia praesentium. Pariatur voluptatem nesciunt doloremque magni quibusdam provident accusantium. Vel labore libero, corporis esse quo assumenda nemo!
-Quas nobis cumque veniam illo qui aliquid nihil recusandae totam error? Beatae, quas vitae. Sit, quaerat neque aut fuga totam quisquam, eligendi numquam facilis inventore similique consectetur maiores cumque voluptatum.
-Earum facere porro aspernatur expedita velit iste sequi atque alias voluptatem minus? Est doloribus eaque magnam veritatis! Amet non iure beatae dolor expedita natus neque earum, maiores enim eius error.
-Consequuntur at sint quas voluptas ex ea, velit tempore voluptatum incidunt doloremque esse explicabo, et vero inventore praesentium porro nulla quisquam quaerat, laudantium pariatur nisi. Ab animi incidunt exercitationem commodi.
-Iure, iusto qui error suscipit explicabo blanditiis reprehenderit, corrupti numquam autem doloribus repellendus maxime sequi reiciendis veniam sunt id earum non quam ab nulla, dolor perferendis eum. Vero, soluta cumque?
-Deleniti magni quisquam at iure tenetur incidunt ab mollitia, nam vitae quae fuga non laborum sunt repellendus aliquam quis culpa quas possimus voluptatibus voluptatem temporibus reiciendis dolor eius numquam. Maiores.
-Consequatur vero asperiores aut tenetur excepturi nisi nesciunt expedita amet nihil, laborum eos odio libero suscipit animi beatae voluptatum adipisci. Ipsam iusto quos nam quaerat natus eius repellat ipsum. Facilis?
-Ullam, blanditiis qui? Ipsum, a iste facilis dignissimos distinctio vel? Fugiat delectus eius necessitatibus sed labore sapiente? Velit sunt sint accusantium quos mollitia quia ex, laudantium nesciunt, animi eum inventore.
-Optio molestias deleniti numquam earum quo veritatis voluptate dolorum minima iure iste explicabo quae sit tempore officiis hic, ratione illo excepturi. Nam dolores recusandae possimus illum asperiores quos perspiciatis inventore!
-Inventore repudiandae similique ea commodi consectetur illum. Nulla sed nam quisquam repellat minima adipisci nostrum modi accusantium, voluptatem quam delectus aut laboriosam nihil! Totam debitis amet obcaecati recusandae rerum ea.
-Ex odio molestiae id, sapiente nesciunt modi nemo unde minima distinctio magnam accusantium illo praesentium soluta, libero corporis dolorem, ipsam iure accusamus excepturi necessitatibus tenetur aliquam. Expedita quis illo repellendus!
-Impedit quae tempora cum culpa? Omnis veniam eveniet, reprehenderit sed provident nemo earum minima rem quae optio libero eligendi necessitatibus? Quibusdam voluptate asperiores, possimus dolore hic molestiae qui quas doloremque?
-Ea sed impedit esse veritatis. Reprehenderit doloremque repellat officiis accusantium, sed iste voluptatum blanditiis iusto nam harum neque porro exercitationem hic dicta accusamus cum odio. Doloribus id voluptas aspernatur eos.
-Quidem quaerat optio similique aliquid commodi nesciunt a vero minima quibusdam necessitatibus. Asperiores, magnam temporibus assumenda voluptates est sequi quibusdam odit quam cumque unde eveniet consequuntur deleniti, dolor, fuga rerum?
-Dolores distinctio non quae iste aperiam voluptates debitis eaque, assumenda fugiat illum ullam optio cupiditate dolor ratione necessitatibus consectetur! Possimus nesciunt totam quae consequuntur voluptates officia tempore vitae fugit iure.
-Praesentium ratione atque tempora, sunt placeat illo expedita tenetur? Nostrum velit excepturi, unde id libero ipsa culpa a nam deleniti debitis dolore distinctio quisquam ab labore, incidunt eius, cupiditate temporibus.
-Harum tenetur consequatur vitae ex temporibus, obcaecati sed ad quasi fuga commodi accusamus magnam doloribus debitis, iusto itaque aut, magni eius veniam consectetur perspiciatis excepturi exercitationem voluptas recusandae! Quia, iure.
-Similique nulla nemo aut, rerum maiores qui reprehenderit eos, distinctio saepe laudantium ex? Doloremque, modi ex nesciunt voluptatum optio neque. Pariatur ipsum incidunt natus, cum sint vel! Earum, illo impedit.
-Deserunt voluptatem accusamus quidem quod? Repellat nesciunt mollitia voluptatibus blanditiis doloribus rem eveniet at sequi corrupti qui accusamus, vitae quos quam esse quo laudantium magnam iusto tempore quis culpa aliquid!
-Repudiandae quos suscipit in facilis itaque a voluptatem labore sapiente natus aliquid doloremque repellat ut voluptate, eius, neque perferendis amet libero dolores illo incidunt. Maxime officia consectetur quia odio unde.
-Alias harum minima necessitatibus rerum, nihil consequuntur suscipit odit in, sunt exercitationem repudiandae, explicabo perferendis officia optio voluptas veritatis porro ad. Quisquam reprehenderit fuga, itaque sapiente at eveniet ullam perspiciatis.
-Natus qui accusamus, officia porro, nostrum illo alias aut ab provident sit modi magni dolore rerum unde omnis ipsam harum. Libero ipsam quis nam cum, error quisquam minus nihil quidem!
-Placeat voluptate, voluptatem a iure labore odio eveniet et nostrum quidem minus sequi consequuntur ducimus qui aspernatur delectus maiores aliquam nam quam rerum nesciunt? Iste temporibus aperiam ut natus tenetur.
-Officiis repudiandae incidunt sunt magni tenetur aspernatur delectus nisi aliquid eligendi porro, dolor molestias sit eius? Tenetur amet qui delectus ullam ex maiores officia earum, inventore quibusdam suscipit, sit totam.
-Autem nostrum quis, fugiat a mollitia sapiente perferendis magnam laudantium veniam odit ipsam obcaecati illo, doloribus itaque culpa fugit deserunt, vitae similique. Culpa quibusdam ipsam architecto provident nisi nesciunt eos.
-Laboriosam beatae velit aliquam corrupti ut aut excepturi harum nisi ab fuga! Praesentium, repellat. Optio eligendi labore iure deserunt quaerat repellendus voluptatem quas aut quibusdam veritatis! Esse debitis repudiandae sunt.
-Vero corporis eum aliquam numquam velit nisi aut dolorum distinctio qui porro, magni minima omnis voluptatum suscipit provident ratione quo esse ipsam iure asperiores culpa. Nam ipsa nobis inventore provident!
-Minus neque et odio veritatis, enim ipsam officia eligendi sed commodi soluta deserunt reiciendis labore reprehenderit corrupti unde amet, numquam, rerum deleniti odit nobis. Enim recusandae placeat pariatur nostrum sit!
-Quos ipsam numquam qui nam saepe sunt voluptatibus harum eos adipisci quibusdam? Aliquid velit, eum a error assumenda quisquam. Commodi pariatur nobis in a fuga odio velit ut nulla non?
-Maxime, eaque unde nulla iusto, quis saepe, voluptates tempora cumque nostrum quo culpa? Minima minus, et magni illum dignissimos inventore corporis facilis? Ullam commodi maiores accusantium rerum sint perspiciatis esse.
-Quia quasi corrupti ab excepturi, laudantium corporis nam. Quas quaerat maiores soluta doloremque, eligendi consequatur reprehenderit, magni, nisi autem officiis pariatur vero ipsam aperiam aliquid deserunt aliquam natus a asperiores?
-Nam iure aliquid, eos aut enim ipsam facere accusamus. Unde totam sunt ratione adipisci reprehenderit, fuga eveniet ea suscipit quo maiores itaque libero quasi ad, voluptates deserunt veritatis recusandae quia.
-Eaque aliquid pariatur similique, asperiores consequatur delectus dolor. Aut totam pariatur porro magnam recusandae reprehenderit eos repellat incidunt est voluptates doloribus saepe, consequatur dolorum labore fugit soluta laboriosam exercitationem voluptas.
-Quidem dolore numquam doloribus laudantium consectetur autem ducimus culpa alias consequuntur distinctio. Nobis enim quisquam labore. Voluptatem facilis officiis commodi sed error enim quibusdam hic quia at, cum magnam veniam.
-Voluptate nulla, tenetur, modi sit veritatis eum eius repellat corrupti beatae repudiandae, debitis soluta dolor. Id amet possimus adipisci et, quidem exercitationem provident necessitatibus ea nesciunt facilis quis quam eveniet!</p>
-@endsection
+@section('content_header')
+    <h1 class="text-center font-weight-bold text-uppercase">Registro de visitas</h1>
+@stop
+
+@section('content')
+@can('visita.create')
+{{-- <a class="btn btn-info mb-3" href="{{route('visita.create')}}">Registrar Visita</a> --}}
+@endcan
+<a class="btn btn-info mb-3" href="{{route('visita.create')}}">Registrar Visita</a>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">    
+      <table class="table table table-striped" id="visita">
+          <thead class="thead-dark">
+            <tr>
+              <th>Fecha</th>
+              <th>Visitante</th>
+              <th>DNI</th>
+              <th>Institucion</th>
+              <th>Telefono</th>
+              <th>Hora de ingreso</th>
+              <th>Hora de salida</th>
+              <th>N° Visitantes</th>
+              <th>Tipo Visitante</th>
+              <th>Asunto</th>
+              @can('visitas.edit','visitas.destroy')
+              <th>Acciones</th>
+              @endcan
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($visita as $item)
+            <tr>
+              <td>{{ $item->periodos->fecha}}</td>
+              <td>{{ $item->visitantes->nombre}} {{ $item->visitantes->a_paterno}} {{ $item->visitantes->a_materno}}</td>
+              <td>{{ $item->visitantes->dni}}</td>
+              <td>{{ $item->visitantes->institucion}}</td>
+              <td>{{ $item->visitantes->telefono }}</td>
+              <td>{{ $item->periodos->hora_inicio}}</td>
+              <td>{{ $item->periodos->hora_fin}}</td>
+              <td>{{ $item->visitantes->num_visitantes}}</td>
+              <td>{{ $item->asunto}}</td>
+              <td> {{  $item->tipo_visitantes->tipo_visitante }}</td>
+              @can('visita.edit','visita.destroy')
+              <td width="140px">
+                <a href="{{$item->info_pdf}}" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a>
+                <a href="{{route('visita.edit', $item)}}" class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
+                <form action="{{route('visita.destroy', $item)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
+              </td>
+              @endcan
+              
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+@stop
+
+@section('js')
+
+@if(session('eliminar') == 'delete')
+<script>
+ Swal.fire(
+          '¡Eliminado!',
+          'El registro ha sido eliminado.',
+          'success'
+        )
+</script>
+@endif
+<script>
+  $('.eliminar').submit(function(e){
+    e.preventDefault();
+
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Si, eliminarlo!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.submit();
+      }
+    })
+
+  });
+
+  $('#visita').DataTable({
+    order: [[0, 'desc']],
+    responsive: true,
+    autoWidth: false,
+    "language": {
+          "lengthMenu": "Mostrar "+`
+          <select class="custom-select custom-select-sm form-control form-control-sm">
+            <option value="10">10</option> 
+            <option value="25">25</option> 
+            <option value="50">50</option> 
+            <option value="100">100</option> 
+            <option value="-1">All</option> 
+          </select>
+          `+" registros por paginas",
+          "zeroRecords": "Nada encontrado - lo siento",
+          "info": "Mostrando la pagina _PAGE_ de _PAGES_",
+          "infoEmpty": "No records available",
+          "infoFiltered": "(filtrado de _MAX_ registro total)",
+          "search":"Buscar: ",
+          "paginate":{
+            "next": "Siguiente",
+            "previous": "Anterior"
+          }
+      }
+  });
+</script>
+@stop
