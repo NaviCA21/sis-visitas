@@ -67,6 +67,7 @@
                                 @enderror
                             </div>
 
+                            {{-- tipe visited --}}
                             <div class="mb-3 select-container">
                                 <x-input-label :value="__('Tipo de Usuario')" />
                                 <select id="tipo_usuario" name="tipo_usuario"
