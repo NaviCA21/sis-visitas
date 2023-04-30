@@ -399,7 +399,7 @@ return [
         [
             'text'       => 'Usuarios',
             'icon_color' => 'blue',
-            'route'     => 'usuario.index',
+            'route'     => 'user.index',
             'icon' => 'fas fa fa-users'
         ],
         // [

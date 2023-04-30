@@ -21,6 +21,8 @@ class TipoUsuarioController extends Controller
     public function create()
     {
         //
+        $tipoUsuarios = TipoUsuario::all();
+        return view('tipoUsuario.create', compact('tipoUsuarios'));
     }
 
     /**
