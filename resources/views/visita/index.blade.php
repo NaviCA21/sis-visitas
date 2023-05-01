@@ -45,13 +45,13 @@
               <td>{{ $item->visitante->TipoVisitante->tipo_visitante}}</td>
               <td>{{ $item->asunto}}</td>
               @can('visita.edit','visita.destroy')
+
+              @endcan
               <td width="140px">
                 <a href="{{$item->info_pdf}}" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a>
                 <a href="{{route('visita.edit', $item)}}" class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
                 <form action="{{route('visita.destroy', $item)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
               </td>
-              @endcan
-
             </tr>
             @endforeach
           </tbody>

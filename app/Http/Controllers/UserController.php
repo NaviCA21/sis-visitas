@@ -62,9 +62,7 @@ public function delete(User $user)
 public function edit($id)
 {
     $user=User::findOrFail($id);
-    // $user = User::all();
     $tipoUsuarios = TipoUsuario::all();
-    //  return view('auth.update', compact('user', 'tipoUsuarios'));
     return view('user.edit', compact('user','tipoUsuarios'));
     // dd($user);
  }

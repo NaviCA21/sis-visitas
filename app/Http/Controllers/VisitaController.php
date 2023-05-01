@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class VisitaController extends Controller
 {
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -19,14 +19,13 @@ class VisitaController extends Controller
 
 
 
-     public function index()
+    public function index()
     {
         $visita = Visita::all();
 
         // dd($visita);
 
         return view('visita.index', compact('visita'));
-
     }
 
     /**
@@ -92,8 +91,6 @@ class VisitaController extends Controller
 
 
         return Redirect::route('visita.index');
-
-
     }
 
     /**
@@ -110,6 +107,9 @@ class VisitaController extends Controller
     public function edit(Visita $visita)
     {
         //
+        $visitante = $visita->visitante;
+        $periodo = $visita->periodo;
+        return view('visita.edit', compact('visita', 'visitante', 'periodo'));
     }
 
     /**
