@@ -28,7 +28,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('user', UserController::class)->middleware('auth')->names('user');
 
-Route::resource('visita', VisitaController::class);
 Route::resource('usuario', UserController::class);
 Route::get('/create', [UserController::class, 'create']);
 
@@ -47,5 +46,7 @@ Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit
 Route::put('user/{user}', [UserController::class, 'update'])->name('user.update');
 
 // RUTAS PARA VISITAS
-Route::get('visita/{visita}/edit', [VisitaController::class, 'edit'])->name('visita.edit');
-Route::get('visita/{visita}', [VisitaController::class, 'destroy'])->name('visita.destroy');
+// Route::get('visita/{visita}/edit', [VisitaController::class, 'edit'])->name('visita.edit');
+// Route::get('visita/{visita}', [VisitaController::class, 'destroy'])->name('visita.destroy');
+
+Route::resource('visitas', VisitaController::class);

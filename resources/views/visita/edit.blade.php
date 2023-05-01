@@ -11,7 +11,7 @@
         <div class="col-md-6 offset-md-3 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('visita.update', $visita) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('visitas.update', $visita) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="form-row">
@@ -106,7 +106,7 @@
                                     @enderror
                                 </div>
                                 
-                                <label class="mb-3">Asunto</label>
+                                {{-- <label class="mb-3">Asunto</label>
                                 <select class="selectpicker form-control dropup" data-dropup-auto="false"
                                     data-style="btn-default" data-size="5" data-live-search="true" name="autor">
                                     <option>Seleccionar...</option>
@@ -117,11 +117,11 @@
                                 </select>
                                 @error('autor')
                                     <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+                                @enderror --}}
+                            {{-- </div> --}}
 
                         <div class="row justify-content-center">
-                            <a href="{{ route('informes.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
+                            <a href="{{ route('visitas.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
                             <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
                         </div>
                     </form>
@@ -145,22 +145,5 @@
             $('select').selectpicker();
         });
 
-        function string_to_slug() {
-
-            titulo = document.getElementById("nombre").value;
-            titulo = titulo.replace(/^\s+|\s+$/g, '');
-            titulo = titulo.toLowerCase();
-            var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-            var to = "aaaaeeeeiiiioooouuuunc------";
-            for (var i = 0, l = from.length; i < l; i++) {
-                titulo = titulo.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-            }
-            titulo = titulo.replace(/[^a-z0-9 -]/g, '')
-                .replace(/\s+/g, '-')
-                .replace(/-+/g, '-');
-
-            document.getElementById('slug').value = titulo;
-
-        }
     </script>
 @stop

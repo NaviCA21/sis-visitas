@@ -9,7 +9,7 @@
 @can('visita.create')
 {{-- <a class="btn btn-info mb-3" href="{{route('visita.create')}}">Registrar Visita</a> --}}
 @endcan
-<a class="btn btn-info mb-3" href="{{route('visita.create')}}">Registrar Visita</a>
+<a class="btn btn-info mb-3" href="{{route('visitas.create')}}">Registrar Visita</a>
 <div class="card">
   <div class="card-body">
     <div class="table-responsive">
@@ -27,30 +27,26 @@
               <th>Tipo Visitante</th>
               <th>Asunto</th>
               <th>Acciones</th>
-              @can('visitas.edit','visitas.destroy')
-              @endcan
             </tr>
           </thead>
           <tbody>
-            @foreach ($visita as $item)
+            @foreach ($visita as $visita)
             <tr>
-              <td>{{ $item->periodo->fecha}}</td>
-              <td>{{ $item->visitante->nombre}} {{ $item->visitante->a_paterno}} {{ $item->visitante->a_materno}}</td>
-              <td>{{ $item->visitante->dni}}</td>
-              <td>{{ $item->visitante->institucion}}</td>
-              <td>{{ $item->visitante->telefono }}</td>
-              <td>{{ $item->periodo->hora_inicio}}</td>
-              <td>{{ $item->periodo->hora_fin}}</td>
-              <td>{{ $item->visitante->num_visitantes}}</td>
-              <td>{{ $item->visitante->TipoVisitante->tipo_visitante}}</td>
-              <td>{{ $item->asunto}}</td>
-              @can('visita.edit','visita.destroy')
+              <td>{{ $visita->periodo->fecha}}</td>
+              <td>{{ $visita->visitante->nombre}} {{ $visita->visitante->a_paterno}} {{ $visita->visitante->a_materno}}</td>
+              <td>{{ $visita->visitante->dni}}</td>
+              <td>{{ $visita->visitante->institucion}}</td>
+              <td>{{ $visita->visitante->telefono }}</td>
+              <td>{{ $visita->periodo->hora_inicio}}</td>
+              <td>{{ $visita->periodo->hora_fin}}</td>
+              <td>{{ $visita->visitante->num_visitantes}}</td>
+              <td>{{ $visita->visitante->TipoVisitante->tipo_visitante}}</td>
+              <td>{{ $visita->asunto}}</td>
 
-              @endcan
               <td width="140px">
-                <a href="{{$item->info_pdf}}" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a>
-                <a href="{{route('visita.edit', $item)}}" class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
-                <form action="{{route('visita.destroy', $item)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
+                {{-- <a href="{{$visita->info_pdf}}" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a> --}}
+                <a href="{{route('visitas.edit', $visita)}}" class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
+                <form action="{{route('visitas.destroy', $visita)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
               </td>
             </tr>
             @endforeach

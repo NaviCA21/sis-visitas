@@ -9,13 +9,6 @@ class Visita extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['info_pdf'];
-
-    protected $casts = [
-        'info_fecha' => 'datetime',
-    ];
-
-
     public function visita(){
         return $this->belongsTo(Visita::class);
     }
@@ -26,8 +19,5 @@ class Visita extends Model
     public function periodo(){
         return $this->belongsTo(Periodo::class);
     }
-    public function getRouteKeyName(){
 
-        return 'info_slug';
-    }
 }

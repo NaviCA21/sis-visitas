@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Periodo;
+use App\Models\TipoVisitante;
 use App\Models\Visita;
 use App\Models\Visitante;
 use Illuminate\Http\Request;
@@ -49,15 +50,15 @@ class VisitaController extends Controller
             'fecha' => 'required',
             'hora_inicio' => 'required',
             'hora_fin' => 'required',
-
+            // perido
             'nombre' => 'required',
             'a_paterno' => 'required',
             'a_materno' => 'required',
             'dni' => 'required',
             'institucion' => 'required',
             'telefono' => 'required',
-            'num_visitante' => 'required',
-
+            'num_visitantes' => 'required',
+            'tipo' => 'required',
             'asunto' => 'required',
         ]);
 
@@ -68,6 +69,10 @@ class VisitaController extends Controller
 
         $periodos->save();
 
+        $tipo_visitante = new TipoVisitante();
+        $tipo_visitante->tipo_visitante = $request->tipo;
+
+        $tipo_visitante->save();
 
         // $visitante->nombre de la bd = $request->name del formulario
         $visitantes = new visitante();
@@ -77,13 +82,15 @@ class VisitaController extends Controller
         $visitantes->dni = $request->dni;
         $visitantes->institucion = $request->institucion;
         $visitantes->telefono = $request->telefono;
-        $visitantes->num_visitantes = $request->num_visitante;
+        $visitantes->num_visitantes = $request->num_visitantes;
+        $visitantes->tipo_visitante_id = $tipo_visitante->id;
 
         $visitantes->save();
 
 
 
         $visita = new Visita();
+        if($request->asunto !=NULL)
         $visita->asunto = $request->asunto;
         $visita->visitante_id = $visitantes->id;
         $visita->periodo_id = $periodos->id;
@@ -125,6 +132,8 @@ class VisitaController extends Controller
      */
     public function destroy(Visita $visita)
     {
-        //
+        $visita->delete();
+
+        return back()->with('eliminar', 'delete');
     }
 }

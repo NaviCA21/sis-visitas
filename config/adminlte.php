@@ -378,7 +378,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Lista de visitas',
-                    'route'  => 'visita.index',
+                    'route'  => 'visitas.index',
                     'icon' => 'fas fa-fw fa-list',
                 ],
                 [
@@ -411,7 +411,7 @@ return [
          [
              'text'       => 'Visitas',
              'icon_color' => 'cyan',
-             'route'        => 'visita.index',
+             'route'        => 'visitas.index',
              'icon' => 'fas fa fa-users'
         ],
         // [
