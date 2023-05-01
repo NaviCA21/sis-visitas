@@ -100,38 +100,6 @@
 
   });
 
-//   $(document).ready(function() {
-//     var table = $('#visita').DataTable( {
-//         pagingType: 'numbers',
-//         dom: 'Bfrtip',
-//         columnDefs: [
-//       {
-//       targets: 0,
-//       searchable: true,
-//         visible: false
-//     }
-//     ],
-//         buttons: [
-//             {
-//                 extend: 'excelHtml5',
-//                 exportOptions: {
-//                     columns: [ 0, 1, 2 ],
-//                 }
-//             },
-//             {
-//                 extend: 'pdfHtml5',
-//                 exportOptions: {
-//                     columns: [ 0, 1, 2 ]
-//                 }
-//             },
-//         ]
-//     } );
- 
-//     table.buttons().container()
-//         .appendTo( '#visita_wrapper .col-md-6:eq(0)' );
-// } );
-
-
   $(document).ready(function() {
     var table = $('#visita').DataTable( {
       order: [[2, 'desc']],
