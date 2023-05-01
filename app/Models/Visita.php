@@ -20,11 +20,11 @@ class Visita extends Model
         return $this->belongsTo(Visita::class);
     }
     //relacion de muchos a uno
-    public function visitantes(){
-        return $this->belongsTo(visitantes::class);
+    public function visitante(){
+        return $this->belongsTo(Visitante::class);
     }
-    public function periodos(){
-        return $this->belongsTo(peridos::class);
+    public function periodo(){
+        return $this->belongsTo(Periodo::class);
     }
     public function getRouteKeyName(){
 

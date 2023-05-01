@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\peridos;
+use App\Models\Periodo;
 use App\Models\Visita;
-use App\Models\Visitantes;
+use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,17 +16,17 @@ class VisitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
 
-     
+
+
      public function index()
     {
         $visita = Visita::all();
 
         // dd($visita);
 
-        return view('visita.index', compact('visita'));    
-    
+        return view('visita.index', compact('visita'));
+
     }
 
     /**
@@ -58,11 +58,11 @@ class VisitaController extends Controller
             'institucion' => 'required',
             'telefono' => 'required',
             'num_visitante' => 'required',
-            
+
             'asunto' => 'required',
         ]);
 
-        $periodos = new peridos();
+        $periodos = new Periodo();
         $periodos->fecha = $request->fecha;
         $periodos->hora_inicio = $request->hora_inicio;
         $periodos->hora_fin = $request->hora_fin;
@@ -71,7 +71,7 @@ class VisitaController extends Controller
 
 
         // $visitante->nombre de la bd = $request->name del formulario
-        $visitantes = new visitantes();
+        $visitantes = new visitante();
         $visitantes->nombre = $request->nombre;
         $visitantes->a_paterno = $request->a_paterno;
         $visitantes->a_materno = $request->a_materno;
@@ -86,13 +86,13 @@ class VisitaController extends Controller
 
         $visita = new Visita();
         $visita->asunto = $request->asunto;
-        $visita->visitante_id = $visitantes->id;  
-        $visita->periodo_id = $periodos->id;  
+        $visita->visitante_id = $visitantes->id;
+        $visita->periodo_id = $periodos->id;
         $visita->save();
 
 
         return Redirect::route('visita.index');
-        
+
 
     }
 
