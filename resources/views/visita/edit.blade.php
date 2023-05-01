@@ -11,7 +11,7 @@
     <div class="col-md-12 offset-md-12">
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('visitas.update', $visita) }}" method="post">
+                <form action="{{ route('visitas.update', $visita, $visitante) }}" method="post">
                     @method('put')
                     @csrf
                     <div class="row">
@@ -107,9 +107,8 @@
                         <div class="form-group col-md-4">
                         <label class="mb-3">Tipo Visitante</label>
                             <select class="form-control" name="tipo">
-                                <option>Seleccionar...</option>
-                                <option value="Persona Juridica">Persona Juridica</option>
-                                <option value="Persona Natural">Persona Natural</option>
+                                    <option value="Persona Juridica" {{ old('tipo', $visita->visitante->tipoVisitante->tipo_visitante) == 'Persona Juridica' ? 'selected' : '' }}>Persona Juridica</option>
+                                    <option value="Persona Natural" {{ old('tipo', $visita->visitante->tipoVisitante->tipo_visitante) == 'Persona Natural' ? 'selected' : '' }}>Persona Natural</option>
                             </select>
                         </div>
                         @error('tipo')
@@ -120,13 +119,13 @@
                         <label class="mb-3">Asunto</label>
                         <select class="selectpicker form-control dropup" data-dropup-auto="false"
                             data-style="btn-default" data-size="5" data-live-search="true" name="asunto">
-                            <option>Seleccionar...</option>
-                            <option value="Mercados">Mercados</option>
-                            <option value="Atención a la población">Atención a la población</option>
-                            <option value="Barrios">Barrios</option>
-                            <option value="Limpieza">Limpieza</option>
-                            <option value="Mantenimiento de vías">Mantenimiento de vías</option>
-                            <option value="Transporte">Transportes</option>
+                            {{-- <option>Seleccionar...</option> --}}
+                            <option value="Mercados" {{ old('asunto', $visita->asunto) == 'Mercados' ? 'selected' : '' }}>Mercados</option>
+                            <option value="Atención a la población" {{ old('asunto', $visita->asunto) == 'Atención a la población' ? 'selected' : '' }}>Atención a la población</option>
+                            <option value="Barrios" {{ old('asunto', $visita->asunto) == 'Barrios' ? 'selected' : '' }}>Barrios</option>
+                            <option value="Limpieza" {{ old('asunto', $visita->asunto) == 'Limpieza' ? 'selected' : '' }}>Limpieza</option>
+                            <option value="Mantenimiento de vías" {{ old('asunto', $visita->asunto) == 'Mantenimiento de vías' ? 'selected' : '' }}>Mantenimiento de vías</option>
+                            <option value="Transporte" {{ old('asunto', $visita->asunto) == 'Transporte' ? 'selected' : '' }}>Transportes</option>
                             <option value="otros">Otros</option>
 
                         @error('asunto')
