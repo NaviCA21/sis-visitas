@@ -11,7 +11,7 @@
         <div class="col-md-12 offset-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('visita.store') }}" method="post">
+                    <form action="{{ route('visitas.store') }}" method="post">
                         @csrf
                         <div class="row">
 
@@ -156,7 +156,7 @@
                         </div>
 
                         <div class="row justify-content-center">
-                            <a href="{{ route('visita.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
+                            <a href="{{ route('visitas.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
                             <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
                         </div>
 

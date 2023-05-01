@@ -97,7 +97,7 @@ class VisitaController extends Controller
         $visita->save();
 
 
-        return Redirect::route('visita.index');
+        return Redirect::route('visitas.index');
     }
 
     /**
