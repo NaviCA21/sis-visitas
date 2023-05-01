@@ -114,7 +114,7 @@ class VisitaController extends Controller
     public function edit(Visita $visita)
     {
         //
-        $visitante = $visita->visitante;
+        $visitante = Visitante::all();
         $periodo = $visita->periodo;
         return view('visita.edit', compact('visita', 'visitante', 'periodo'));
     }

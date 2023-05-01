@@ -61,7 +61,6 @@
                                 <label>Teléfono</label>
                                 <input type="tel" class="form-control" id="telefono" name="telefono"
                                     placeholder="Ingrese su número de teléfono" value="{{ old('telefono') }}">
-                                <small>Ejemplo: 43-456-7890</small>
                                 @error('telefono')
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
