@@ -8,6 +8,7 @@ use App\Models\Visita;
 use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class VisitaController extends Controller
 {
@@ -138,6 +139,7 @@ class VisitaController extends Controller
             'tipo' => 'required',
             'asunto' => 'required',
         ]);
+
 
         $periodo->fecha = $request->fecha;
         $periodo->hora_inicio = $request->hora_inicio;
