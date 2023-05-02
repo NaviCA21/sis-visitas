@@ -379,6 +379,7 @@ return [
                 [
                     'text' => 'Lista de visitas',
                     'route'  => 'visitas.index',
+                    'active' => ['visitas*'],
                     'icon' => 'fas fa-fw fa-list',
                 ],
                 [
@@ -398,8 +399,9 @@ return [
         ['header' => 'ADMINISTRADOR'],
         [
             'text'       => 'Usuarios',
-            'icon_color' => 'blue',
+            'icon_color' => 'white',
             'route'     => 'user.index',
+            'active' => ['user*', 'register*'],
             'icon' => 'fas fa fa-users'
         ],
         // [
@@ -410,8 +412,9 @@ return [
     
          [
              'text'       => 'Visitas',
-             'icon_color' => 'cyan',
+             'icon_color' => 'white',
              'route'        => 'visitas.index',
+             'active' => ['visitas*'],
              'icon' => 'fas fa fa-users'
         ],
         // [
