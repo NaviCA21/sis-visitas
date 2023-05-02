@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 
 @section('content')
+@if(auth()->user()->tipo_usuario_id=='1')
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center mx-auto">
             <div class="col-md-6">
@@ -139,4 +140,5 @@
             </div>
         </div>
     </div>
+    @endif
 @endsection

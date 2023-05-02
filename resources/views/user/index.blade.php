@@ -1,12 +1,13 @@
 @extends('adminlte::page')
 
 @section('content')
+@if(auth()->user()->tipo_usuario_id=='1')
 <div class="row">
   <div class="col-md-6">
     <h1>Lista de usuarios</h1>
   </div>
   <div class="col-md-6 text-right">
-    <a href="{{ route('register.create') }}" class="btn btn-primary mt-4 ml-auto">Registrar nuevo usuario</a>
+    <a href="{{ route('user.create') }}" class="btn btn-primary mt-4 ml-auto">Registrar nuevo usuario</a>
   </div>
 </div>
 
@@ -51,4 +52,5 @@
     </table>
   </div>
 </div>
+@endif
 @endsection
