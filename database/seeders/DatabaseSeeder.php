@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\TipoUsuario;
+use App\Models\TipoVisitante;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -50,6 +51,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'javierponce@gmail.com',
             'password' => bcrypt('administrador'),
             'tipo_usuario_id' => 1,
+        ]);
+
+        $tipoVisitante1 = \App\Models\TipoVisitante::create([
+            'tipo_visitante' => 'Persona Juridica'
+        ]);
+        $tipoVisitante2 = \App\Models\TipoVisitante::create([
+            'tipo_visitante' => 'Persona Natural'
         ]);
 
     }
