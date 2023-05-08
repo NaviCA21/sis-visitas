@@ -393,11 +393,11 @@ return [
             ],
         ],
         [
-            'text' => 'Reportes',
-            'url'  => 'admin/settings',
+            'text' => 'Estadisticas',
+            'route'  => 'estadisticas.index',
             'icon' => 'fas fa-fw fa-user',
         ],
-        ['header' => 'ADMINISTRADOR'],
+        ['header' => 'ADMINISTRADOR'],  
         [
             'text'       => 'Usuarios',
             'icon_color' => 'white',

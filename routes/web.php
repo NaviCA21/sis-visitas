@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\PeridosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitaController;
@@ -50,3 +51,4 @@ Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'
 // Route::get('visita/{visita}', [VisitaController::class, 'destroy'])->name('visita.destroy');
 
 Route::resource('visitas', VisitaController::class);
+Route::resource('estadisticas', EstadisticasController::class);
