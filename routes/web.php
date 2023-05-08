@@ -5,6 +5,8 @@ use App\Http\Controllers\PeridosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitaController;
 use App\Http\Controllers\PeriodoController;
+use App\Http\Controllers\PJuridicaController;
+use App\Http\Controllers\PNaturalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,12 @@ Route::resource('user', UserController::class)->middleware('auth')->names('user'
 Route::resource('usuario', UserController::class);
 Route::get('/create', [UserController::class, 'create']);
 
+
+// Route::get('pjuridica/create', [PJuridicaController::class, 'create'])->name('pjuridica.create');
+// Route::get('pjuridica/store', [PJuridicaController::class, 'store'])->name('pjuridica.store');
+
+
+
 Route::get('/register', [UserController::class, 'create'])->name('register.create');
 Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
@@ -52,3 +60,6 @@ Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'
 
 Route::resource('visitas', VisitaController::class);
 Route::resource('estadisticas', EstadisticasController::class);
+
+Route::resource('pjuridica', PJuridicaController::class);
+Route::resource('pnatural', PNaturalController::class);

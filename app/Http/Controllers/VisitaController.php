@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Periodo;
 use App\Models\TipoVisitante;
 use App\Models\Visita;
+use App\Models\VisitaCancelada;
 use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -41,6 +42,7 @@ class VisitaController extends Controller
     {
         return view('visita.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -91,8 +93,8 @@ class VisitaController extends Controller
 
 
         $visita = new Visita();
-        if($request->asunto !=NULL)
-        $visita->asunto = $request->asunto;
+        if ($request->asunto != NULL)
+            $visita->asunto = $request->asunto;
         $visita->visitante_id = $visitantes->id;
         $visita->periodo_id = $periodos->id;
         $visita->save();
@@ -116,7 +118,7 @@ class VisitaController extends Controller
     {
         //
         $visitante = TipoVisitante::all();
-        return view('visita.edit', compact('visita','visitante'));
+        return view('visita.edit', compact('visita', 'visitante'));
     }
 
     /**
@@ -165,8 +167,8 @@ class VisitaController extends Controller
 
 
 
-        if($request->asunto !=NULL)
-        $visita->asunto = $request->asunto;
+        if ($request->asunto != NULL)
+            $visita->asunto = $request->asunto;
         $visita->visitante_id = $visitante->id;
         $visita->periodo_id = $periodo->id;
         $visita->save();
@@ -180,6 +182,9 @@ class VisitaController extends Controller
      */
     public function destroy(Visita $visita)
     {
+        // VisitaCancelada::
+
+
         $visita->delete();
 
         return back()->with('eliminar', 'delete');
