@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visita extends Model
 {
     use HasFactory;
+    protected $table = 'visitas';
 
     public function visita(){
         return $this->belongsTo(Visita::class);

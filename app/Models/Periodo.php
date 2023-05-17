@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Periodo extends Model
 {
     use HasFactory;
+
+    protected $table = 'periodos';
+
     //relacion de uno a muchos
     public function periodos(){
         return $this->hasMany(Periodo::class);

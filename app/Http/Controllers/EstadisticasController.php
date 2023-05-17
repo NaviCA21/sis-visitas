@@ -16,6 +16,8 @@ class EstadisticasController extends Controller
 
         // dd($visita);
 
+        
+
         return view('estadisticas.index', compact('estadisticas'));
     }
 
