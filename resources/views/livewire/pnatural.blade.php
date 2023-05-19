@@ -87,40 +87,87 @@
                             </div>
                         </div> --}}
 
-                        <div class="form-group row">
-                            <label for="vive_apoderado" class="col-sm-4 col-form-label">Fecha</label>
-                            <div class="col-sm-8">
-                                {{-- <select name="vive_apoderado" class="form-control" wire:model="vive" id="vive_apoderado">
-                                    <option value="NO">No</option>
-                                    <option value="SI">Si</option>
-                                </select> --}}
+                        <div class="form-group col-md-4 mt-2">
+                            <label>Fecha</label>
 
-                                <input type="date" class="form-control" wire:model="vive" id="fecha" name="fecha"
-                                    placeholder="Ingrese la fecha" value="">
+                            <input type="date" class="form-control" wire:model="fecha_live_wire" id="fecha" name="fecha"
+                                placeholder="Ingrese la fecha" value="">
 
-                                @error('fecha')
-                                    <small class="text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
+                            <input type="hidden" class="form-control" wire:model="search" value="">
+
+                            @error('fecha')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+
                         </div>
 
-                        {{ $vive }}
+                        <input type="hidden" value="{{ $dayOfWeek = date("l", strtotime($fecha_live_wire));  }}">
 
-                        <input type="hidden" value="{{ $vive  }}">
+                        <input type="hidden" value="{{ gettype($lista_horas_ocupadas) }}">
 
-                        @if($vive == 'SI')
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
-                                        <label for="grado_instruccion_apoderado" class="col-sm-4 col-form-label">Grado de instruccion</label>
-                                        <div class="col-sm-8">
-                                            <input type="button" name="grado_instruccion_apoderado" value="09:00:00" class="form-control" id="grado_instruccion_apoderado">
-                                        </div>
-                                    </div>
+                        {{ gettype($lista_horas_ocupadas) }}
+
+                        @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Wednesday' || $dayOfWeek == 'Friday')
+
+                            <div class="form-group col-md-4 mt-2">
+                                <label>Horario</label>
+
+                                <div class="row justify-content-center">
+
+
+                                    {{-- <select id="hora_inicio" name="hora_inicio" class="form-control">
+                                        <option value="09:00:00">9am</option>
+                                        <option value="10:00:00">10am</option>
+                                        <option value="11:00:00">11am</option>
+                                    </select>                                   --}}
+
+                                    <select id="hora_inicio" name="hora_inicio" class="form-control">
+
+
+
+                                        @foreach($horarios_libres as $horario)
+                                            <option value="{{$horario}}">{{$horario}}</option>
+
+                                        @endforeach
+
+
+                                    </select>
+
                                 </div>
+
                             </div>
 
+                        @elseif($dayOfWeek == 'Tuesday' || $dayOfWeek == 'Thursday')
+
+                            <div class="form-group col-md-4 mt-2">
+                                <label>Horario</label>
+
+                                <div class="row justify-content-center">
+
+                                    <select id" name="hora_inicio" class="form-control">
+                                        <option value="14:00:00">2pm</option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+                        @else
+                            <div class="form-group col-md-4 mt-2">
+                                <label>No se puede reservar ni sabados ni domingos.</label>
+
+                                <div class="row justify-content-center">
+
+                                    NO SE PUEDE RESERVAR NI SABADOS NI DOMINGOS.
+
+                                </div>
+
+                            </div>
+
+
                         @endif
+
+
 
 {{--
                         <div class="form-group col-md-4 mt-2">

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha');
             $table->time('hora_inicio');
-            $table->time('hora_fin');
+            $table->time('hora_fin')->nullable();
             $table->timestamps();
         });
     }
@@ -28,3 +28,4 @@ return new class extends Migration
         Schema::dropIfExists('periodos');
     }
 };
+    

@@ -21,7 +21,7 @@ class PNaturalController extends Controller
         $request->validate([
             'fecha' => 'required',
             'hora_inicio' => 'required',
-            'hora_fin' => 'required',
+            // 'hora_fin' => 'required',
             'nombre' => 'required',
             'a_paterno' => 'required',
             'a_materno' => 'required',
@@ -30,7 +30,7 @@ class PNaturalController extends Controller
             'telefono' => 'required',
             'num_visitantes' => 'required',
             // 'tipo' => 'required',
-            'asunto' => 'required',
+            // 'asunto' => 'required',
         ]);
 
         $periodos = new Periodo();
@@ -57,8 +57,6 @@ class PNaturalController extends Controller
         $visitantes->tipo_visitante_id = $tipo_visitante->id;
 
         $visitantes->save();
-
-
 
         $visita = new Visita();
         if ($request->asunto != NULL) {
