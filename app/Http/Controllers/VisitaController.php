@@ -10,6 +10,7 @@ use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class VisitaController extends Controller
 {
