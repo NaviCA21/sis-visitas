@@ -380,7 +380,7 @@ return [
                 ],
                 [
                     'text' => 'Visitas culminadas',
-                    'url'  => '#',
+                    'url'  => 'visitaculminada',
                     'icon' => 'fas fa-fw fa-list',
 
                 ],
@@ -397,7 +397,7 @@ return [
             'route'  => 'estadisticas.index',
             'icon' => 'fas fa-fw fa-user',
         ],
-        ['header' => 'ADMINISTRADOR'],  
+        ['header' => 'ADMINISTRADOR'],
         [
             'text'       => 'Usuarios',
             'icon_color' => 'white',

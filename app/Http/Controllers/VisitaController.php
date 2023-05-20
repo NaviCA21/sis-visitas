@@ -69,7 +69,7 @@ class VisitaController extends Controller
         $periodos = new Periodo();
         $periodos->fecha = $request->fecha;
         $periodos->hora_inicio = $request->hora_inicio;
-        $periodos->hora_fin = $request->hora_fin;
+        $periodos->hora_fin =  $request->hora_fin;
 
         $periodos->save();
 

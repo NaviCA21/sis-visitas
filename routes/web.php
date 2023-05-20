@@ -7,6 +7,7 @@ use App\Http\Controllers\VisitaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\PJuridicaController;
 use App\Http\Controllers\PNaturalController;
+use App\Http\Controllers\VisitaCulminadaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,3 +64,5 @@ Route::resource('estadisticas', EstadisticasController::class);
 
 Route::resource('pjuridica', PJuridicaController::class);
 Route::resource('pnatural', PNaturalController::class);
+
+Route::resource('visitaculminada', VisitaCulminadaController::class);

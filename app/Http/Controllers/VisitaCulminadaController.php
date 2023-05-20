@@ -13,6 +13,11 @@ class VisitaCulminadaController extends Controller
     public function index()
     {
         //
+        $culminada = VisitaCulminada::all();
+
+        // dd($visita);
+
+        return view('visita.culminada.index', compact('culminada'));
     }
 
     /**
