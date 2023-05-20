@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class Pnatural extends Component
 {
-
+ 
     public $search = '';
 
     public $fecha_live_wire = '2023-05-24';

@@ -22,7 +22,7 @@ class PJuridicaController extends Controller
         $request->validate([
             'fecha' => 'required',
             'hora_inicio' => 'required',
-            'hora_fin' => 'required',
+            // 'hora_fin' => 'required',
             // perido
             'nombre' => 'required',
             'a_paterno' => 'required',
