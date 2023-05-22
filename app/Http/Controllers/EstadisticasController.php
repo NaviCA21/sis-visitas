@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estadisticas;
+use App\Models\Visita;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class EstadisticasController extends Controller
@@ -12,13 +14,17 @@ class EstadisticasController extends Controller
      */
     public function index()
     {
-        $estadisticas = Estadisticas::all();
+        $datosEstadisticos = Visita::select(DB::raw("DAYNAME(periodos.fecha) as dia_semana, COUNT(*) as total_visitas"))
+    ->join('periodos', 'visitas.periodo_id', '=', 'periodos.id')
+    ->whereIn(DB::raw("DAYOFWEEK(periodos.fecha)"), [2, 3, 4, 5, 6]) // Filtrar solo los días de la semana (lunes a viernes)
+    ->groupBy('dia_semana')
+    ->orderBy(DB::raw("DAYOFWEEK(periodos.fecha)"))
+    ->get();
 
-        // dd($visita);
 
-        
 
-        return view('estadisticas.index', compact('estadisticas'));
+        // Pasar los datos a la vista
+        return view('estadisticas.index', compact('datosEstadisticos'));
     }
 
     /**

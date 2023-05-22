@@ -378,15 +378,16 @@ return [
                     'active' => ['visitas*'],
                     'icon' => 'fas fa-fw fa-list',
                 ],
+                
                 [
-                    'text' => 'Visitas culminadas',
-                    'url'  => 'visitaculminada',
+                    'text' => 'Visitas canceladas',
+                    'url'  => 'visitacancelada',
                     'icon' => 'fas fa-fw fa-list',
 
                 ],
                 [
-                    'text' => 'Visitas canceladas',
-                    'url'  => 'visitacancelada',
+                    'text' => 'Historial de Visitas',
+                    'url'  => 'visitaculminada',
                     'icon' => 'fas fa-fw fa-list',
 
                 ],

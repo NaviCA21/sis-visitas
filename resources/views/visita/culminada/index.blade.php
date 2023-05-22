@@ -1,58 +1,119 @@
 @extends('adminlte::page')
 
-@section('sistemas')
-    <h1>sistemas</h1>
+
+@section('content_header')
+    <h1 class="text-center font-weight-bold text-uppercase">Historial de visitas</h1>
+@stop
+
+
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css">
 @stop
 
 @section('content')
 
-
-
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    {{-- <h1 class="m-0">Bienvenido</h1> --}}
-                    <h1 class="m-0 text-center">
-                        Bienvenido al sistema  informático de gestión académica
-
-                    </h1>
-                    <h2 class="m-0 text-center">
-                        "Relacion de visitas culminadas"
-
-                    </h2>
-                </div>
-                <div class="col-sm-6">
-                    {{-- <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
-                    </ol> --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table table-striped" id="visita">
-              <thead class="thead-dark">
-                <tr>
-                  <th>Fecha</th>
-                  <th>Visitante</th>
-                  <th>DNI</th>
-                  <th>Institucion</th>
-                  <th>Telefono</th>
-                  <th>Horario</th>
-                  <th>N° Visitantes</th>
-                  <th>Tipo Visitante</th>
-                  <th>Asunto</th>
-                  <th>Observaciones</th>
-                  <th>Acciones</th>
-                </tr>
-              </thead>
-            </table>
-          </div>
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table table-striped" id="visita">
+          <thead class="thead-dark">
+            <tr>
+              <th>Fecha</th>
+              <th>Visitante</th>
+              <th>DNI</th>
+              <th>Institucion</th>
+              <th>Telefono</th>
+              <th>Horario</th>
+              <th>N° Visitantes</th>
+              <th>Tipo Visitante</th>
+              <th>Asunto</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($visitas as $visita)
+            <tr>
+              <td>{{ $visita->periodo->fecha}}</td>
+              <td>{{ $visita->visitante->nombre}} {{ $visita->visitante->a_paterno}} {{ $visita->visitante->a_materno}}</td>
+              <td>{{ $visita->visitante->dni}}</td>
+              <td>{{ $visita->visitante->institucion}}</td>
+              <td>{{ $visita->visitante->telefono }}</td>
+              <td>{{ $visita->periodo->hora_inicio}} {{ $visita->periodo->hora_fin}}</td>
+              <td>{{ $visita->visitante->num_visitantes}}</td>
+              <td>{{ $visita->visitante->TipoVisitante->tipo_visitante}}</td>
+              <td>{{ $visita->asunto}}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
-    </div>
-    @stop
+  </div>
+</div>
+@stop
+
+@section('js')
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+@if(session('eliminar') == 'delete')
+<script>
+ Swal.fire(
+          '¡Eliminado!',
+          'El registro ha sido eliminado.',
+          'success'
+        )
+</script>
+@endif
+<script>
+  $('.eliminar').submit(function(e){
+    e.preventDefault();
+
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: "No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Si, eliminarlo!',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.submit();
+      }
+    })
+
+  });
+
+  $(document).ready(function() {
+    var table = $('#visita').DataTable( {
+      order: [[2, 'desc']],
+      responsive: true,
+      autoWidth: false,
+        lengthChange: false,
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+                }
+            },
+        ],
+
+    } );
+    table.buttons().container()
+        .appendTo( '#visita_wrapper .col-md-6:eq(0)' );
+} );
+</script>
+@stop

@@ -45,7 +45,7 @@
               <td>{{ $visita->asunto}}</td>
 
               <td width="140px">
-                <a href="#" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a>
+                <!-- <a href="#" class="btn btn-outline-dark btn-sm" target="_blank"><i class="fas fa-lg fa-file"></i></a> -->
                 <a href="{{route('visitas.edit', $visita)}}" class="btn btn-outline-success btn-sm"><i class="fas fa-lg fa-edit"></i></a>
                 <form action="{{route('visitas.destroy', $visita)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
               </td>

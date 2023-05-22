@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Visita;
 
 use App\Models\VisitaCulminada;
 use Illuminate\Http\Request;
@@ -13,11 +14,8 @@ class VisitaCulminadaController extends Controller
     public function index()
     {
         //
-        $culminada = VisitaCulminada::all();
-
-        // dd($visita);
-
-        return view('visita.culminada.index', compact('culminada'));
+        $visitas = Visita::all(); // Obtén todos los registros de la tabla "visitas"
+        return view('visita.culminada.index', compact('visitas')); // Pasa los datos a la vista
     }
 
     /**
