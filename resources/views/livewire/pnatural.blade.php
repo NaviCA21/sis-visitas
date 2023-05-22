@@ -158,28 +158,17 @@
 
                         <input type="hidden" value="{{ $dayOfWeek = date("l", strtotime($fecha_live_wire));  }}">
 
-
-
-
-
-                        @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Wednesday' || $dayOfWeek == 'Friday')
+  
+                        @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
-
-
-                                    {{-- <select id="hora_inicio" name="hora_inicio" class="form-control">
-                                        <option value="09:00:00">9am</option>
-                                        <option value="10:00:00">10am</option>
-                                        <option value="11:00:00">11am</option>
-                                    </select>                                   --}}
-
+ 
                                     <select id="hora_inicio" name="hora_inicio" class="form-control">
 
-
-
+ 
                                         @foreach($horarios_libres as $horario)
                                             <option value="{{$horario}}">{{$horario}}</option>
 
@@ -192,17 +181,29 @@
 
                             </div>
 
-                        @elseif($dayOfWeek == 'Tuesday' || $dayOfWeek == 'Thursday')
+                        @elseif($dayOfWeek == 'Wednesday' )
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
-
                                     <select id="hora_inicio" name="hora_inicio" class="form-control">
-                                        <option value="14:00:00">2pm</option>
+                                        @foreach($horarios_libres as $horario)
+                                                <option value="{{$horario}}">{{$horario}}</option>
+
+                                        @endforeach
                                     </select>
 
+                                </div>
+
+                            </div>
+
+                        @elseif($dayOfWeek == 'Tuesday' || $dayOfWeek == 'Thursday')
+                            <div class="form-group col-md-4 mt-2">
+                                <label>No se puede reservar ni sabados ni domingos.</label>
+
+                                <div class="row justify-content-center">
+                                    MARTES Y JUEVES RESERVADO PARA PERSONA JURIDICA.
                                 </div>
 
                             </div>
@@ -212,9 +213,7 @@
                                 <label>No se puede reservar ni sabados ni domingos.</label>
 
                                 <div class="row justify-content-center">
-
-                                    NO SE PUEDE RESERVAR NI SABADOS NI DOMINGOS.
-
+                                    MARTES Y JUEVES RESERVADO PARA PERSONA JURIDICA.
                                 </div>
 
                             </div>
