@@ -10,6 +10,7 @@ use App\Models\Visitante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
 class VisitaController extends Controller
@@ -31,6 +32,7 @@ class VisitaController extends Controller
 
         return view('visita.index', compact('visita'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -190,4 +192,5 @@ class VisitaController extends Controller
 
         return back()->with('eliminar', 'delete');
     }
+
 }

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('tipo_visitante');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

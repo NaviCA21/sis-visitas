@@ -7,6 +7,7 @@ use App\Http\Controllers\VisitaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\PJuridicaController;
 use App\Http\Controllers\PNaturalController;
+use App\Http\Controllers\VisitaCanceladaController;
 use App\Http\Controllers\VisitaCulminadaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -66,3 +67,7 @@ Route::resource('pjuridica', PJuridicaController::class);
 Route::resource('pnatural', PNaturalController::class);
 
 Route::resource('visitaculminada', VisitaCulminadaController::class);
+Route::resource('visitacancelada', VisitaCanceladaController::class);
+
+Route::put('/visita/cancelada/{id}/restaurar', [VisitaCanceladaController::class, 'restore'])->name('visita.cancelada.restaurar');
+

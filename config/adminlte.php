@@ -386,7 +386,7 @@ return [
                 ],
                 [
                     'text' => 'Visitas canceladas',
-                    'url'  => '#',
+                    'url'  => 'visitacancelada',
                     'icon' => 'fas fa-fw fa-list',
 
                 ],

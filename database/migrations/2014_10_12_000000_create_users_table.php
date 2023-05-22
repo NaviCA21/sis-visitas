@@ -21,6 +21,8 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('tipo_usuario_id')->references('id')->on('tipo_usuarios')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

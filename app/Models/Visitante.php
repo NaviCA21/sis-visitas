@@ -4,24 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Visitante extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     use HasFactory;
 
-    public function visitante(){
-        return $this->hasMany(Visitante::class);
-
-    }
-
-    //relacion uno a muchos
-    public function visitas(){
+    // Relación uno a muchos con Visitas
+    public function visitas()
+    {
         return $this->hasMany(Visita::class);
     }
 
-    //relacion de muchos a uno
-    public function tipoVisitante(){
+    // Relación muchos a uno con TipoVisitante
+    public function tipoVisitante()
+    {
         return $this->belongsTo(TipoVisitante::class);
     }
 }

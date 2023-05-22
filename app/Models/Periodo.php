@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Periodo extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     use HasFactory;
 
     protected $table = 'periodos';
 
-    //relacion de uno a muchos
-    public function periodos(){
-        return $this->hasMany(Periodo::class);
-
-    }
-
-    //relacion uno a muchos
-    public function visita(){
+    // Relación uno a muchos con Visitas
+    public function visitas()
+    {
         return $this->hasMany(Visita::class);
     }
 }

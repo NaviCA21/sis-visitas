@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('visita_culminadas', function (Blueprint $table) {
             $table->id();
+            
             $table->timestamps();
         });
     }

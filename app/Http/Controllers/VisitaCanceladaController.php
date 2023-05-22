@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\VisitaCancelada;
+use App\Models\Periodo;
+use App\Models\TipoVisitante;
+use App\Models\Visitante;
+use App\Models\Visita;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VisitaCanceladaController extends Controller
 {
@@ -12,8 +17,19 @@ class VisitaCanceladaController extends Controller
      */
     public function index()
     {
-        //
+        $visitasCanceladas = Visita::onlyTrashed()->with('visitante.tipoVisitante', 'periodo')->get();
+        // dd($visitasCanceladas);
+        return view('visita.cancelada.index', compact('visitasCanceladas'));
     }
+
+    // Restaurar una visita cancelada
+    public function restore($id)
+    {
+        $visitaCancelada = Visita::onlyTrashed()->find($id);
+        $visitaCancelada->restore();
+        return redirect()->route('visita.cancelada.index')->with('success', 'Visita cancelada restaurada exitosamente');
+    }
+
 
     /**
      * Show the form for creating a new resource.

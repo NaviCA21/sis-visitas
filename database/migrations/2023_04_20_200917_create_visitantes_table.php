@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('num_visitantes');
             $table->foreignId('tipo_visitante_id')->references('id')->on('tipo_visitantes')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
