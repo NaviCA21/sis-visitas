@@ -35,11 +35,11 @@ class Pnatural extends Component
             array_push($horarios_ocupados, $item->hora_inicio);
         }
  
-        if($dayOfWeek == 'Tuesday' ){
+        if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday' ){
             
             $horarios_libres = array_diff($horarios_totales_mananitas, $horarios_ocupados);
         }
-        else if($dayOfWeek == 'Thursday'){
+        else if($dayOfWeek == 'Wednesday'){
 
             $horarios_libres = array_diff($horarios_totales_tardecitas, $horarios_ocupados);
         }else {
