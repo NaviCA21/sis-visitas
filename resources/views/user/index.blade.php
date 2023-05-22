@@ -1,6 +1,11 @@
 @extends('adminlte::page')
 
+@section('content_header')
+    <h1 class="text-center font-weight-bold text-uppercase">Lista de usuarios</h1>
+@stop
+
 @section('content')
+
 @if(auth()->user()->tipo_usuario_id=='1')
 <div class="row">
   <div class="col-md-6">
@@ -13,12 +18,13 @@
 
 <div class="card mt-4">
   <div class="card-body">
-    <table id="example2" class="table table-bordered table-hover">
-      <thead>
+    <div class="table-responsive">
+    <table id="userTable" class="table table-striped">
+      <thead class="thead-dark">
         <tr>
           <th>Nombre del usuario</th>
-          <th>email</th>
-          <th>cargo</th>
+          <th>Email</th>
+          <th>Cargo</th>
           <th>Tipo de usuario</th>
           <th>Fecha de creación</th>
           <th>Acciones</th>
@@ -52,5 +58,26 @@
     </table>
   </div>
 </div>
+</div>
 @endif
 @endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+@stop
+
+@section('js')
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#userTable').DataTable({
+        responsive: true,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        }
+    });
+});
+</script>
+@stop

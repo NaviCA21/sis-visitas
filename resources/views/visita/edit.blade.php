@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group col-md-4 mt-2">
-                            <label>DNI</label>
+                            <label>DNI o RUC</label>
                             <input type="text" class="form-control" id="inputEmail4" name="dni"
                                 value="{{ old('dni', $visita->visitante->dni) }}">
                             @error('dni')

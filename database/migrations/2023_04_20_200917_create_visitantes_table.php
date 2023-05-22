@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('a_paterno');
             $table->string('a_materno');
-            $table->string('dni',8);
+            $table->string('dni',11);
             $table->string('institucion');
             $table->string('telefono',9);
             $table->integer('num_visitantes');

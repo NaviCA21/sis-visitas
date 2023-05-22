@@ -21,7 +21,7 @@
             <tr>
               <th>Fecha</th>
               <th>Visitante</th>
-              <th>DNI</th>
+              <th>DNI o RUC</th>
               <th>Institucion</th>
               <th>Telefono</th>
               <th>Horario</th>
@@ -99,11 +99,25 @@
   });
 
   $(document).ready(function() {
-    var table = $('#visita').DataTable( {
-      order: [[2, 'desc']],
-      responsive: true,
-      autoWidth: false,
-        lengthChange: false,
+    var table = $('#visita').DataTable({
+    order: [[2, 'desc']],
+    responsive: true,
+    autoWidth: false,
+    lengthChange: true,
+    language: {
+      search: "Buscar:",
+      lengthMenu: "Mostrar _MENU_ registros por página",
+      zeroRecords: "No se encontraron registros",
+      info: "Mostrando página _PAGE_ de _PAGES_",
+      infoEmpty: "No hay registros disponibles",
+      infoFiltered: "(filtrados de un total de _MAX_ registros)",
+      paginate: {
+        first: "Primero",
+        previous: "Anterior",
+        next: "Siguiente",
+        last: "Último",
+      },
+    },
         buttons: [
             {
                 extend: 'excelHtml5',
