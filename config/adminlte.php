@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Visitas</b>MPP',
+    'logo_img' => 'vendor/adminlte/dist/img/logomuni.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -378,7 +378,7 @@ return [
                     'active' => ['visitas*'],
                     'icon' => 'fas fa-fw fa-list',
                 ],
-                
+
                 [
                     'text' => 'Visitas canceladas',
                     'url'  => 'visitacancelada',

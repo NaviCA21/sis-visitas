@@ -34967,6 +34967,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 .login-logo a,
 .register-logo a {
   color: #495057;
+  font-size: 10.2rem;
 }
 
 .login-page,
