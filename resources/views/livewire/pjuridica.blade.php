@@ -164,31 +164,27 @@
 
 
 
-                        @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Wednesday' || $dayOfWeek == 'Friday')
+                        @if($dayOfWeek == 'Tuesday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
 
-
                                     <select id="hora_inicio" name="hora_inicio" class="form-control">
-
-
 
                                         @foreach($horarios_libres as $horario)
                                             <option value="{{$horario}}">{{$horario}}</option>
 
                                         @endforeach
 
-
                                     </select>
 
                                 </div>
 
                             </div>
 
-                        @elseif($dayOfWeek == 'Tuesday' || $dayOfWeek == 'Thursday')
+                        @elseif($dayOfWeek == 'Thursday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
@@ -196,25 +192,36 @@
                                 <div class="row justify-content-center">
 
                                     <select id="hora_inicio" name="hora_inicio" class="form-control">
-                                        <option value="14:00:00">2pm</option>
+
+                                        @foreach($horarios_libres as $horario)
+                                            <option value="{{$horario}}">{{$horario}}</option>
+
+                                        @endforeach
+
                                     </select>
 
                                 </div>
 
                             </div>
 
-                        @else
+                        @elseif($dayOfWeek == 'Monday' || $dayOfWeek == 'Wednesday' || $dayOfWeek == 'Firday')
                             <div class="form-group col-md-4 mt-2">
-                                <label>No se puede reservar ni sabados ni domingos.</label>
-
+                                <label>AVISO.</label>
                                 <div class="row justify-content-center">
-
-                                    NO SE PUEDE RESERVAR NI SABADOS NI DOMINGOS.
-
+                                    LUNES, MARTES Y MIERCOLES RESERVADO PARA PERSONA NATURAL.
                                 </div>
 
                             </div>
 
+                        @else
+                            <div class="form-group col-md-4 mt-2">
+                                <label>AVISO.</label>
+
+                                <div class="row justify-content-center">
+                                    SABADO Y DOMINGO NO SE DEBE RESERVAR.
+                                </div>
+
+                            </div>
 
                         @endif  
                         
