@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>REGISTRAR PADRES</h1>
+    <h1 class="text-center font-weight-bold text-uppercase">Registrar Persona Natural</h1>
     @livewireStyles
 
 
@@ -13,7 +13,7 @@
 
     @if (session('info'))
         <div class="alert alert-success">
-            <strong>{{session('info')}}</strong>
+            <strong>{{ session('info') }}</strong>
         </div>
     @endif
 
@@ -31,7 +31,3 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
-
-
-
-
