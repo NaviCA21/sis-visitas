@@ -50,61 +50,59 @@ class VisitaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'fecha' => 'required',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
-            // perido
-            'nombre' => 'required',
-            'a_paterno' => 'required',
-            'a_materno' => 'required',
-            'dni' => 'required',
-            'institucion' => 'required',
-            'telefono' => 'required',
-            'num_visitantes' => 'required',
-            'tipo' => 'required',
-            'asunto' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'fecha' => 'required',
+    //         'hora_inicio' => 'required',
+    //         // perido
+    //         'nombre' => 'required',
+    //         'a_paterno' => 'required',
+    //         'a_materno' => 'required',
+    //         'dni' => 'required',
+    //         'institucion' => 'required',
+    //         'telefono' => 'required',
+    //         'num_visitantes' => 'required',
+    //         'tipo' => 'required',
+    //         'asunto' => 'required',
+    //     ]);
 
-        $periodos = new Periodo();
-        $periodos->fecha = $request->fecha;
-        $periodos->hora_inicio = $request->hora_inicio;
-        $periodos->hora_fin =  $request->hora_fin;
+    //     $periodos = new Periodo();
+    //     $periodos->fecha = $request->fecha;
+    //     $periodos->hora_inicio = $request->hora_inicio;
 
-        $periodos->save();
+    //     // Calcular la hora de finalización sumando una hora a la hora de inicio
+    //     $horaInicio = Carbon::parse($request->hora_inicio);
+    //     $horaFin = $horaInicio->addHour();
+    //     $periodos->hora_fin = $horaFin->format('H:i:s');
 
-        $tipo_visitante = new TipoVisitante();
-        $tipo_visitante->tipo_visitante = $request->tipo;
+    //     $periodos->save();
 
-        $tipo_visitante->save();
+    //     $tipo_visitante = new TipoVisitante();
+    //     $tipo_visitante->tipo_visitante = $request->tipo;
+    //     $tipo_visitante->save();
 
-        // $visitante->nombre de la bd = $request->name del formulario
-        $visitantes = new visitante();
-        $visitantes->nombre = $request->nombre;
-        $visitantes->a_paterno = $request->a_paterno;
-        $visitantes->a_materno = $request->a_materno;
-        $visitantes->dni = $request->dni;
-        $visitantes->institucion = $request->institucion;
-        $visitantes->telefono = $request->telefono;
-        $visitantes->num_visitantes = $request->num_visitantes;
-        $visitantes->tipo_visitante_id = $tipo_visitante->id;
+    //     $visitantes = new Visitante();
+    //     $visitantes->nombre = $request->nombre;
+    //     $visitantes->a_paterno = $request->a_paterno;
+    //     $visitantes->a_materno = $request->a_materno;
+    //     $visitantes->dni = $request->dni;
+    //     $visitantes->institucion = $request->institucion;
+    //     $visitantes->telefono = $request->telefono;
+    //     $visitantes->num_visitantes = $request->num_visitantes;
+    //     $visitantes->tipo_visitante_id = $tipo_visitante->id;
+    //     $visitantes->save();
 
-        $visitantes->save();
+    //     $visita = new Visita();
+    //     if ($request->asunto != NULL)
+    //         $visita->asunto = $request->asunto;
+    //     $visita->visitante_id = $visitantes->id;
+    //     $visita->periodo_id = $periodos->id;
+    //     $visita->save();
 
+    //     return Redirect::route('visitas.index');
+    // }
 
-
-        $visita = new Visita();
-        if ($request->asunto != NULL)
-            $visita->asunto = $request->asunto;
-        $visita->visitante_id = $visitantes->id;
-        $visita->periodo_id = $periodos->id;
-        $visita->save();
-
-
-        return Redirect::route('visitas.index');
-    }
 
     /**
      * Display the specified resource.
@@ -192,5 +190,4 @@ class VisitaController extends Controller
 
         return back()->with('eliminar', 'delete');
     }
-
 }

@@ -7,6 +7,7 @@ use App\Models\Periodo;
 use App\Models\TipoVisitante;
 use App\Models\Visita;
 use App\Models\Visitante;
+use Carbon\Carbon;
 
 class PNaturalController extends Controller
 {
@@ -34,9 +35,15 @@ class PNaturalController extends Controller
         ]);
 
         $periodos = new Periodo();
-        $periodos->fecha = $request->fecha;
-        $periodos->hora_inicio = $request->hora_inicio;
-        $periodos->hora_fin = $request->hora_fin;
+    $periodos->fecha = $request->fecha;
+    $periodos->hora_inicio = $request->hora_inicio;
+
+    // Calcular la hora de finalización sumando una hora a la hora de inicio
+    $horaInicio = Carbon::parse($request->hora_inicio);
+    $horaFin = $horaInicio->addHour();
+    $periodos->hora_fin = $horaFin->format('H:i:s');
+
+    $periodos->save();
 
         $periodos->save();
 
