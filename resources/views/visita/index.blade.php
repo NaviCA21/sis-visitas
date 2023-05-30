@@ -24,7 +24,7 @@
               <th>DNI o RUC</th>
               <th>Institucion</th>
               <th>Telefono</th>
-              <th>Horario</th>
+              <th>Horario de visita</th>
               <th>N° Visitantes</th>
               <th>Tipo Visitante</th>
               <th>Asunto</th>
@@ -39,7 +39,7 @@
               <td>{{ $visita->visitante->dni}}</td>
               <td>{{ $visita->visitante->institucion}}</td>
               <td>{{ $visita->visitante->telefono }}</td>
-              <td>{{ $visita->periodo->hora_inicio}} {{ $visita->periodo->hora_fin}}</td>
+              <td>{{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
               <td>{{ $visita->visitante->num_visitantes}}</td>
               <td>{{ $visita->visitante->TipoVisitante->tipo_visitante}}</td>
               <td>{{ $visita->asunto}}</td>
