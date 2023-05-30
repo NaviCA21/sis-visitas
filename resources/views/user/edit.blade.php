@@ -71,14 +71,18 @@
                             {{-- tipe visited --}}
                             <div class="mb-3 select-container">
                                 <x-input-label :value="__('Tipo de Usuario')" />
-                                <select id="tipo_usuario" name="tipo_usuario"
-                                    class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-800 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <select id="tipo_usuario" name="tipo_usuario" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-800 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                     <option value="" disabled selected>Seleccionar..</option>
                                     @foreach ($tipoUsuarios as $tipoUsuario)
-                                    <option value="{{$tipoUsuario->id}}" {{ $user->tipo_usuario_id == $tipoUsuario->id ? 'selected': ''}}>{{ $tipoUsuario->tipo_usuario }}</option>
+                                        @if ($tipoUsuario->id != 1)
+                                            <option value="{{ $tipoUsuario->id }}" {{ $user->tipo_usuario_id == $tipoUsuario->id ? 'selected' : '' }}>
+                                                {{ $tipoUsuario->tipo_usuario }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
+
 
 
 

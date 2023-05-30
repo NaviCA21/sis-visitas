@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        $tipoUsuarioSuperAdmin = \App\Models\TipoUsuario::create([
+
+            'tipo_usuario' => 'SuperAdmin'
+        ]);
+
         $tipoUsuarioAdmin = \App\Models\TipoUsuario::create([
 
             'tipo_usuario' => 'Administrador'
@@ -34,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'cargo' => 'secretaria',
             'email' => 'usuario@gmail.com',
             'password' => bcrypt('usuario'),
-            'tipo_usuario_id' => 2,
+            'tipo_usuario_id' => 3,
         ]);
 
         $user2 = \App\Models\User::factory()->create([
@@ -50,7 +55,7 @@ class DatabaseSeeder extends Seeder
             'cargo' => 'Alcalde de Puno',
             'email' => 'javierponce@gmail.com',
             'password' => bcrypt('administrador'),
-            'tipo_usuario_id' => 1,
+            'tipo_usuario_id' => 2,
         ]);
 
         $tipoVisitante1 = \App\Models\TipoVisitante::create([

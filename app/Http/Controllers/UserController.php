@@ -62,6 +62,10 @@ public function delete(User $user)
 public function edit($id)
 {
     $user=User::findOrFail($id);
+    // Verificar si el usuario es "superadmin" y la dirección IP coincide
+    if ($user->tipo_usuario_id == '1') {
+        abort(403); // Devolver un error 403 (Acceso denegado)
+    }
     $tipoUsuarios = TipoUsuario::all();
     return view('user.edit', compact('user','tipoUsuarios'));
     // dd($user);

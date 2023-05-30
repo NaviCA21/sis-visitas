@@ -9,7 +9,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"
-                                value="{{ old('nombre') }}">
+                                value="{{ old('nombre') }}" placeholder="Ingrese su nombre">
                             @error('nombre')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -17,7 +17,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Apellido Paterno</label>
                             <input type="text" class="form-control" name="a_paterno" id="a_paterno"
-                                value="{{ old('a_paterno') }}">
+                                value="{{ old('a_paterno') }}" placeholder="Ingrese su apellido paterno">
                             @error('a_paterno')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -26,7 +26,7 @@
                         <div class="form-group col-md-4 mt-2 ">
                             <label>Apellido Materno</label>
                             <input type="text" class="form-control" name="a_materno" id="a_materno"
-                                value="{{ old('a_materno') }}">
+                                value="{{ old('a_materno') }}" placeholder="Ingrese su apellido materno">
                             @error('a_materno')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -34,24 +34,27 @@
 
                         <div class="form-group col-md-4 mt-2">
                             <label>DNI</label>
-                            <input type="text" class="form-control" id="inputEmail4" name="dni"
-                                value="{{ old('dni') }}">
+                            <input type="text" class="form-control" id="dni" name="dni" value="{{ old('dni') }}" maxlength="8" placeholder="Ingrese el DNI (8 dígitos)"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                             @error('dni')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+
+
+
                         <div class="form-group col-md-4 mt-2">
                             <label>Entidad del visitantes</label>
                             <input type="text" class="form-control" id="inputEmail4" name="institucion"
-                                value="{{ old('institucion') }}">
+                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del vosotante">
                             @error('institucion')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group col-md-4 mt-2">
                             <label>Teléfono</label>
-                            <input type="tel" class="form-control" id="telefono" name="telefono"
-                                placeholder="Ingrese su número de teléfono" value="{{ old('telefono') }}">
+                            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }} " maxlength="9"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Ingrese el número de teléfono" required>
                             @error('telefono')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -158,17 +161,17 @@
 
                         <input type="hidden" value="{{ $dayOfWeek = date("l", strtotime($fecha_live_wire));  }}">
 
-  
+
                         @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
- 
+
                                     <select id="hora_inicio" name="hora_inicio" class="form-control">
 
- 
+
                                         @foreach($horarios_libres as $horario)
                                             <option value="{{$horario}}">{{$horario}}</option>
 
