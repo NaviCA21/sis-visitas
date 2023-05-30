@@ -9,6 +9,14 @@
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script>
+        // Datos de muestra
+        var datosEstadisticos = [
+            { mes: 'Enero', visitas_natural: 100, visitas_juridica: 50 },
+            { mes: 'Febrero', visitas_natural: 150, visitas_juridica: 75 },
+            { mes: 'Marzo', visitas_natural: 200, visitas_juridica: 100 },
+            // Agrega más datos de muestra para otros meses...
+        ];
+
         Highcharts.chart('container', {
             chart: {
                 type: 'column'
@@ -17,11 +25,7 @@
                 text: 'Tabla de datos estadísticos'
             },
             xAxis: {
-                categories: [
-                    @foreach($datosEstadisticos as $dato)
-                        '{{ $dato->dia_semana }}',
-                    @endforeach
-                ],
+                categories: datosEstadisticos.map(dato => dato.mes),
                 crosshair: true
             },
             yAxis: {
@@ -31,12 +35,11 @@
                 }
             },
             series: [{
-                name: 'Visitas',
-                data: [
-                    @foreach($datosEstadisticos as $dato)
-                        {{ $dato->total_visitas }},
-                    @endforeach
-                ]
+                name: 'Persona Natural',
+                data: datosEstadisticos.map(dato => dato.visitas_natural)
+            }, {
+                name: 'Persona Jurídica',
+                data: datosEstadisticos.map(dato => dato.visitas_juridica)
             }]
         });
     </script>

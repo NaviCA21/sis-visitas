@@ -30,6 +30,7 @@
       </thead>
       <tbody>
         @foreach ($user as $user)
+        @if ($user->tipo_usuario_id != '1')
           <tr>
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
@@ -51,6 +52,7 @@
               </div>
             </td>
           </tr>
+          @endif
         @endforeach
       </tbody>
     </table>
