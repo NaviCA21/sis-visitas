@@ -78,71 +78,7 @@
                             @error('asunto')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
-                        </div>
-
-                        {{-- <div class="form-group col-md-4">
-                            <label class="mb-3">Asunto</label>
-                            <select class="selectpicker form-control dropup" data-dropup-auto="false"
-                                    data-style="btn-default" data-size="5" data-live-search="true" name="asunto">
-                                <option>Seleccionar...</option>
-                                <option value="Mercados">Mercados</option>
-                                <option value="Atención a la población">Atención a la población</option>
-                                <option value="Barrios">Barrios</option>
-                                <option value="Limpieza">Limpieza</option>
-                                <option value="Mantenimiento de vías">Mantenimiento de vías</option>
-                                <option value="Transporte">Transportes</option>
-                                <option value="otros">Otross</option>
-                            </select>
-
-                            <div id="otros-asunto" style="display: none;">
-                                <label class="mt-3">Especificar otro asunto:</label>
-                                <input type="text" class="form-control" name="otros_asunto">
-                            </div>
-
-                        </div>
-
-                        <script>
-                            // Mostrar u ocultar el campo de texto según la opción seleccionada
-                            var select = document.querySelector('[name="asunto"]');
-                            var otrosDiv = document.querySelector('#otros-asunto');
-                            select.addEventListener('change', function() {
-                                if (select.value === 'otros') {
-                                    otrosDiv.style.display = 'block';
-                                } else {
-                                    otrosDiv.style.display = 'none';
-                                }
-                            });
-
-                            // Actualizar valor del campo de texto cuando se envía el formulario
-                            var form = document.querySelector('form');
-                            form.addEventListener('submit', function() {
-                                if (select.value === 'otros') {
-                                    var otrosAsunto = document.querySelector('[name="otros_asunto"]');
-                                    otrosAsunto.value = otrosAsunto.value.trim();
-                                    select.value = otrosAsunto.value === '' ? 'otros' : otrosAsunto.value;
-                                }
-                            });
-                        </script> --}}
-
-                        {{-- <div class="form-group col-md-4 mt-2">
-                            <label>Fecha</label>
-                            <input wire:model="search" type="date" class="form-control" id="fecha" name="fecha"
-                                placeholder="Ingrese la fecha" value="{{ old('fecha') }}">
-                            @error('fecha')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div> --}}
-
-
-                        {{-- <div class="form-group row">
-                            <label for="vive_apoderado" class="col-sm-4 col-form-label">Vive</label>
-                            <div class="col-sm-8">
-                                <select name="vive_apoderado" class="form-control" wire:model="vive" id="vive_apoderado">
-                                    <option value="NO">No</option>
-                                    <option value="SI">Si</option>
-                                </select>
-                            </div>
-                        </div> --}}
+                        </div> 
 
                         <div class="form-group col-md-4 mt-2">
                             <label>Fecha</label>
@@ -223,10 +159,7 @@
 
 
                         @endif
-
-
-
-
+  
                     </div>
 
                     <div class="row justify-content-center">
@@ -243,7 +176,6 @@
 @section('js')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script> --}}
 
     <script>
         $(function() {
