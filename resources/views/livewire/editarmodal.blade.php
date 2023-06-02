@@ -49,7 +49,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Entidad del visitantes</label>
                             <input type="text" class="form-control" id="institucion" name="institucion"
-                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del vosotante" wire:model="institucion">
+                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del visitante" wire:model="institucion">
                             @error('institucion')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -117,6 +117,8 @@
                                 </div>
 
                             </div>
+
+                            {{-- <h2>{{implode(', ', $horarios_libres)}}</h2> --}}
 
                         @elseif($dayOfWeek == 'Wednesday' )
 

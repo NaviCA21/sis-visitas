@@ -23,6 +23,34 @@ class ListaVisitas extends Component
     {
         $visita = Visita::all();
         // dd($visita);
+
+        $lista_horas_ocupadas = Periodo::where('fecha', '=', $this->fecha_live_wire)->get();
+
+        $horarios_totales_mananitas = array('09:00:00', '10:00:00', '11:00:00');
+        $horarios_totales_tardecitas = array('14:00:00', '15:00:00');
+
+        $dayOfWeek = date("l", strtotime( $this->fecha_live_wire));
+
+        $horarios_ocupados = array();
+
+        foreach ($lista_horas_ocupadas as $item) { 
+            array_push($horarios_ocupados, $item->hora_inicio);
+        }
+ 
+        if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday' ){
+            
+            $this->horarios_libres = array_diff($horarios_totales_mananitas, $horarios_ocupados);
+        }
+        else if($dayOfWeek == 'Wednesday'){
+
+            $this->horarios_libres = array_diff($horarios_totales_tardecitas, $horarios_ocupados);
+        }else {
+
+            $this->horarios_libres = array('00:00:00');
+            // $horarios_ocupados = array();
+        }
+
+
         return view('livewire.lista-visitas', compact('visita'));
     }
 
@@ -41,8 +69,7 @@ class ListaVisitas extends Component
 
         $visita = Visita::findOrFail($id);
         $this->id_visita = $id;
-        $this->asunto = $visita->asunto;
-        
+        $this->asunto = $visita->asunto;        
 
         $this->id_visitante = $visita->visitante_id;
         $this->id_periodo = $visita->periodo_id;
@@ -64,32 +91,7 @@ class ListaVisitas extends Component
         $this->hora_inicio = $periodo->hora_inicio;
 
         $this->fecha_live_wire = $this->fecha;  
-
-        $lista_horas_ocupadas = Periodo::where('fecha', '=', $this->fecha_live_wire)->get();
-
-        $horarios_totales_mananitas = array('09:00:00', '10:00:00', '11:00:00');
-        $horarios_totales_tardecitas = array('14:00:00', '15:00:00');
-
-        $dayOfWeek = date("l", strtotime( $this->fecha_live_wire));
-
-        $horarios_ocupados = array();
-
-
-        foreach ($lista_horas_ocupadas as $item) { 
-            array_push($horarios_ocupados, $item->hora_inicio);
-        }
  
-        if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday' ){
-            
-            $this->horarios_libres = array_diff($horarios_totales_mananitas, $horarios_ocupados);
-        }
-        else if($dayOfWeek == 'Wednesday'){
-
-            $this->horarios_libres = array_diff($horarios_totales_tardecitas, $horarios_ocupados);
-        }else {
-
-            $this->horarios_libres = array('00:00:00');
-        }
 
         $this->abrirModal();
     
