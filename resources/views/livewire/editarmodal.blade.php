@@ -49,7 +49,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Entidad del visitantes</label>
                             <input type="text" class="form-control" id="institucion" name="institucion"
-                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del vosotante" wire:model="institucion">
+                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del visitante" wire:model="institucion">
                             @error('institucion')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -118,6 +118,8 @@
 
                             </div>
 
+                            {{-- <h2>{{implode(', ', $horarios_libres)}}</h2> --}}
+
                         @elseif($dayOfWeek == 'Wednesday' )
 
                             <div class="form-group col-md-4 mt-2">
@@ -159,7 +161,7 @@
   
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                                <button wire:click.prevent="actualizar()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-purple-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-purple-800 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">Guardar</button>
+                                <button wire:click="actualizar()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-purple-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-purple-800 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">Guardar</button>
                             </span>
 
                             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
