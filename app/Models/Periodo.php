@@ -11,8 +11,9 @@ class Periodo extends Model
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-
+    
     use HasFactory;
+    protected $fillable = ['fecha', 'hora_inicio', 'hora_fin'];
 
     protected $table = 'periodos';
 

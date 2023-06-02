@@ -12,7 +12,9 @@ class Visitante extends Model
 
     protected $dates = ['deleted_at'];
 
+    
     use HasFactory;
+    protected $fillable = ['nombre', 'a_paterno', 'a_materno', 'dni', 'institucion', 'telefono', 'num_visitantes'];
 
     // Relación uno a muchos con Visitas
     public function visitas()

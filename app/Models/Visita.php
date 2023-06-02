@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -12,6 +13,10 @@ class Visita extends Model
     protected $dates = ['deleted_at'];
 
     protected $table = 'visitas';
+
+    use HasFactory;
+
+    protected $fillable = ['asunto'];
 
     protected static function boot()
     {

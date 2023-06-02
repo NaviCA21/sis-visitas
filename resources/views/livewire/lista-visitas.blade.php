@@ -17,7 +17,8 @@
       @endif
 
 
-      <button wire:click="crear()" class="bg-green-500 hover:bg-green-600 font-bold py-2 px-4 my-3" >Nuevo</button>
+      {{-- <button wire:click="crear()" class="bg-green-500 hover:bg-green-600 font-bold py-2 px-4 my-3" >Nuevo</button> --}}
+      <a class="btn btn-info mb-3" href="{{route('visitas.create')}}">Registrar Visita</a>
       @if($modal)
           @include('livewire.editarmodal')   
       @endif    
