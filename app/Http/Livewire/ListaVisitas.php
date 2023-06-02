@@ -47,9 +47,7 @@ class ListaVisitas extends Component
         }else {
 
             $this->horarios_libres = array('00:00:00');
-            // $horarios_ocupados = array();
-        }
-
+        } 
 
         return view('livewire.lista-visitas', compact('visita'));
     }
@@ -88,10 +86,7 @@ class ListaVisitas extends Component
 
         // periodo
         $this->fecha = $periodo->fecha;
-        $this->hora_inicio = $periodo->hora_inicio;
-
-        $this->fecha_live_wire = $this->fecha;  
- 
+        $this->hora_inicio = $periodo->hora_inicio;         
 
         $this->abrirModal();
     
@@ -118,7 +113,7 @@ class ListaVisitas extends Component
 
         Periodo::updateOrCreate(['id'=>$this->id_periodo],
         [
-            'fecha' => $this->fecha,
+            'fecha' => $this->fecha_live_wire, 
             'hora_inicio' => $this->hora_inicio,
             'hora_fin' => $this->hora_inicio 
         ]);
