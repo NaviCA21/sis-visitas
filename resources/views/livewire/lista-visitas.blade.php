@@ -20,8 +20,8 @@
       {{-- <button wire:click="crear()" class="bg-green-500 hover:bg-green-600 font-bold py-2 px-4 my-3" >Nuevo</button> --}}
       <a class="btn btn-info mb-3" href="{{route('visitas.create')}}">Registrar Visita</a>
       @if($modal)
-          @include('livewire.editarmodal')   
-      @endif    
+          @include('livewire.editarmodal')
+      @endif
 
       <table class="table-fixed w-full">
           <thead>
@@ -29,12 +29,12 @@
                   <th class="px-4 py-2">ID</th>
                   <th class="px-4 py-2">DESCRIPCION</th>
                   <th class="px-4 py-2">CANTIDAD</th>
-                  <th class="px-4 py-2">ACCIONES</th>    
+                  <th class="px-4 py-2">ACCIONES</th>
               </tr>
           </thead>
           <tbody>
               @foreach($visita as $visita)
-              <tr> 
+              <tr>
                   <td class="border px-4 py-2 text-center">{{ $visita->periodo->fecha}}</td>
                   <td class="border px-4 py-2 text-center">{{ $visita->visitante->nombre}} {{ $visita->visitante->a_paterno}} {{ $visita->visitante->a_materno}}</td>
                   <td class="border px-4 py-2 text-center">{{ $visita->visitante->dni}}</td>
@@ -43,10 +43,10 @@
                   <td class="border px-4 py-2 text-center">{{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
                   <td class="border px-4 py-2 text-center">{{ $visita->visitante->num_visitantes}}</td>
                   <td class="border px-4 py-2 text-center">{{ $visita->visitante->TipoVisitante->tipo_visitante}}</td>
-                  <td class="border px-4 py-2 text-center">{{ $visita->asunto}}</td> 
+                  <td class="border px-4 py-2 text-center">{{ $visita->asunto}}</td>
                   <td class="border px-4 py-2 text-center">
                       <button wire:click="editar({{$visita->id}})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button>
-                      <button wire:click="borrar({{$visita->id}})" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4">Borrar</button>
+                      <form action="{{route('visitas.destroy', $visita)}}" method="post" style="display: inline;" class="eliminar"> @csrf @method('delete') <button type="submit" class="btn btn-outline-danger btn-sm"><i class="fas fa-lg fa-trash"></i></button></form>
                   </td>
               </tr>
               @endforeach

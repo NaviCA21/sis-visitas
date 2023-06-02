@@ -14,21 +14,10 @@ class EstadisticasController extends Controller
      */
     public function index()
     {
-        $datosEstadisticos = Visita::select(
-            DB::raw("DAYNAME(periodos.fecha) as dia_semana"),
-            DB::raw("tipovisitante.nombre as tipo_visitante"),
-            DB::raw("COUNT(*) as total_visitas")
-        )
-            ->join('periodos', 'visitas.periodo_id', '=', 'periodos.id')
-            ->join('visitantes', 'visitas.visitante_id', '=', 'visitantes.id')
-            ->join('tipovisitante', 'visitantes.tipo_visitante_id', '=', 'tipovisitante.id')
-            ->whereIn(DB::raw("DAYOFWEEK(periodos.fecha)"), [2, 3, 4, 5, 6]) // Filtrar solo los días de la semana (lunes a viernes)
-            ->groupBy('dia_semana', 'tipo_visitante')
-            ->orderBy(DB::raw("DAYOFWEEK(periodos.fecha)"))
-            ->get();
 
+        
         // Pasar los datos a la vista
-        return view('estadisticas.index', compact('datosEstadisticos'));
+        return view('estadisticas.index');
     }
 
     /**
