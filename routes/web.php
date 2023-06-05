@@ -72,4 +72,5 @@ Route::resource('visitacancelada', VisitaCanceladaController::class);
 Route::put('/visita/cancelada/{id}/restaurar', [VisitaCanceladaController::class, 'restore'])->name('visita.cancelada.restaurar');
 Route::get('visita/cancelada', [VisitaController::class, 'index'])->name('visita.cancelada.index');
 
+Route::get('/estadisticas/chart-data', 'EstadisticasController@getChartData')->name('estadisticas.chartData');
 

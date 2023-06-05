@@ -5,34 +5,71 @@
         <div class="card-body">
             <h1>Resultados del Reporte</h1>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-
-                        <select class="form-control" id="filtro_anio" name="filtro_anio">
-                            <option value="">Seleccione un año</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <!-- Agrega más años aquí -->
-                        </select>
+            <form id="filterForm" action="{{ route('estadisticas.index') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="filtro_anio">Seleccione un año</label>
+                            <select class="form-control" name="filtro_anio" onchange="submitForm()">
+                                <option value="">Todos los años</option>
+                                @foreach($years as $year)
+                                    <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>{{ $year }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="filtro_mes">Seleccione un mes</label>
+                            <select class="form-control" id="filtro_mes" name="filtro_mes" onchange="submitForm()">
+                                <option value="">Todos los meses</option>
+                                @foreach($months as $month)
+                                <option value="{{ $month }}">{{ \Carbon\Carbon::parse($selectedYear . '-' . $month . '-01')->locale('es')->monthName }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <select class="form-control" id="filtro_mes" name="filtro_mes">
-                            <option value="">Seleccione un mes</option>
-                            <option value="01">Enero</option>
-                            <option value="02">Febrero</option>
-                            <!-- Agrega más meses aquí -->
-                        </select>
-                    </div>
-                </div>
-            </div>
+            </form>
 
             <div id="chart_div"></div>
         </div>
     </div>
-@stop
+
+    <script>
+        function submitForm() {
+            document.getElementById("filterForm").submit();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadChart();
+        });
+
+        function loadChart() {
+            var selectedMonth = document.getElementById("filtro_mes").value;
+
+            if (selectedMonth) {
+                var url = "{{ route('estadisticas.chartData') }}?filtro_anio={{ $selectedYear }}&filtro_mes=" + selectedMonth;
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Renderizar el gráfico con los datos obtenidos
+                        // Puedes utilizar cualquier biblioteca de gráficos como Chart.js o Google Charts aquí
+                        // Ejemplo:
+                        var chartData = data.chartData;
+                        // ...
+                    })
+                    .catch(error => {
+                        console.error("Error al cargar los datos del gráfico:", error);
+                    });
+            }
+        }
+    </script>
+@endsection
+
+
+
 
 @section('js')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -43,36 +80,11 @@
         function drawChart() {
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Fecha');
-            data.addColumn('number', 'Persona Jurídica');
-            data.addColumn('number', 'Persona Natural');
+            data.addColumn('number', 'Visitas');
 
-            // Datos ficticios para el gráfico de barras
-            var visitasData = [
-                ['2023-05-01', 3, 2],
-                ['2023-05-02', 4, 3],
-                ['2023-05-03', 6, 5],
-                ['2023-05-04', 7, 4],
-                // Agrega más datos ficticios aquí
-            ];
+            var chartData = @json($chartData);
 
-            // Filtrar datos por año, mes y semana según la selección del usuario
-            var filtroAnio = document.getElementById('filtro_anio').value;
-            var filtroMes = document.getElementById('filtro_mes').value;
-            var visitasFiltradas = [];
-
-            visitasFiltradas = visitasData.filter(function (visita) {
-                if (filtroAnio && visita[0].startsWith(filtroAnio)) {
-                    if (filtroMes && visita[0].substring(5, 7) !== filtroMes) {
-                        return false;
-                    }
-
-                    return true;
-                }
-
-                return false;
-            });
-
-            data.addRows(visitasFiltradas);
+            data.addRows(chartData);
 
             var options = {
                 title: 'Cantidad de Visitas',
@@ -94,6 +106,4 @@
         document.getElementById('filtro_anio').addEventListener('change', drawChart);
         document.getElementById('filtro_mes').addEventListener('change', drawChart);
     </script>
-
-
-@stop
+@endsection
