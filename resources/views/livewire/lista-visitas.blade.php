@@ -2,8 +2,8 @@
     <h1 class="text-gray-900">CRUD con Laravel 8 y Livewire</h1>
 </x-slot>
 
-<a class="btn btn-info mb-3" href="{{ route('visitas.create') }}">Registrar Visita</a>
 <div class="py-12">
+    <a class="btn btn-info mb-3" href="{{ route('visitas.create') }}">Registrar Visita</a>
     <div class="max-w-7xl mx-auto sm:px6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
 

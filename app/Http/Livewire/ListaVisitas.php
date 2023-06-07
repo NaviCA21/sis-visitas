@@ -64,7 +64,7 @@ class ListaVisitas extends Component
 
     public function editar($id)
     {
-        dd('hola');
+        // dd('hola');
         $visita = Visita::findOrFail($id);
         $this->id_visita = $id;
         $this->asunto = $visita->asunto;
@@ -86,6 +86,8 @@ class ListaVisitas extends Component
 
         // periodo
         $this->fecha = $periodo->fecha;
+        $this->fecha_live_wire = $periodo->fecha;
+
         $this->hora_inicio = $periodo->hora_inicio;
 
         $this->abrirModal();
