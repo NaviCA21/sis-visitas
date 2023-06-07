@@ -9,6 +9,7 @@ use App\Http\Controllers\PJuridicaController;
 use App\Http\Controllers\PNaturalController;
 use App\Http\Controllers\VisitaCanceladaController;
 use App\Http\Controllers\VisitaCulminadaController;
+use App\Http\Controllers\VisitaJuridicaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,7 +62,7 @@ Route::put('user/{user}', [UserController::class, 'update'])->name('user.update'
 // Route::get('visita/{visita}', [VisitaController::class, 'destroy'])->name('visita.destroy');
 
 Route::resource('visitas', VisitaController::class);
-Route::resource('estadisticas', EstadisticasController::class);
+Route::get('visitasjuridica', [VisitaJuridicaController::class, 'index'])->name('visitasjuridica.index');
 
 Route::resource('pjuridica', PJuridicaController::class);
 Route::resource('pnatural', PNaturalController::class);
@@ -72,5 +73,7 @@ Route::resource('visitacancelada', VisitaCanceladaController::class);
 Route::put('/visita/cancelada/{id}/restaurar', [VisitaCanceladaController::class, 'restore'])->name('visita.cancelada.restaurar');
 Route::get('visita/cancelada', [VisitaController::class, 'index'])->name('visita.cancelada.index');
 
-Route::get('/estadisticas/chart-data', 'EstadisticasController@getChartData')->name('estadisticas.chartData');
+Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas.index');
+Route::get('/estadisticas/chart-data', [EstadisticasController::class, 'chartData'])->name('estadisticas.chartData');
+
 

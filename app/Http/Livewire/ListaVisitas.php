@@ -8,9 +8,9 @@ use App\Models\Visitante;
 use App\Models\Periodo;
 
 class ListaVisitas extends Component
-{   
+{
     //definimos unas variables frontend
-    public $id_visita, $id_visitante, $id_periodo, $nombre, $a_paterno, $a_materno, 
+    public $id_visita, $id_visitante, $id_periodo, $nombre, $a_paterno, $a_materno,
     $dni, $institucion, $telefono, $num_visitantes, $asunto,
     $fecha, $hora_inicio;
 
@@ -33,12 +33,12 @@ class ListaVisitas extends Component
 
         $horarios_ocupados = array();
 
-        foreach ($lista_horas_ocupadas as $item) { 
+        foreach ($lista_horas_ocupadas as $item) {
             array_push($horarios_ocupados, $item->hora_inicio);
         }
- 
+
         if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday' ){
-            
+
             $this->horarios_libres = array_diff($horarios_totales_mananitas, $horarios_ocupados);
         }
         else if($dayOfWeek == 'Wednesday'){
@@ -47,7 +47,7 @@ class ListaVisitas extends Component
         }else {
 
             $this->horarios_libres = array('00:00:00');
-        } 
+        }
 
         return view('livewire.lista-visitas', compact('visita'));
     }
@@ -56,25 +56,25 @@ class ListaVisitas extends Component
     {
         $this->modal = true;
     }
-    
+
     public function cerrarModal()
     {
         $this->modal = false;
     }
-    
+
     public function editar($id)
     {
-
+        dd('hola');
         $visita = Visita::findOrFail($id);
         $this->id_visita = $id;
-        $this->asunto = $visita->asunto;        
+        $this->asunto = $visita->asunto;
 
         $this->id_visitante = $visita->visitante_id;
         $this->id_periodo = $visita->periodo_id;
         //relacion con tablas
         $visitante = Visitante::findOrFail($visita->visitante_id);
         $periodo = Periodo::findOrFail($visita->periodo_id);
-        
+
         // visitante
         $this->nombre = $visitante->nombre;
         $this->a_paterno = $visitante->a_paterno;
@@ -86,10 +86,10 @@ class ListaVisitas extends Component
 
         // periodo
         $this->fecha = $periodo->fecha;
-        $this->hora_inicio = $periodo->hora_inicio;         
+        $this->hora_inicio = $periodo->hora_inicio;
 
         $this->abrirModal();
-    
+
     }
 
     public function actualizar()
@@ -113,14 +113,14 @@ class ListaVisitas extends Component
 
         Periodo::updateOrCreate(['id'=>$this->id_periodo],
         [
-            'fecha' => $this->fecha_live_wire, 
+            'fecha' => $this->fecha_live_wire,
             'hora_inicio' => $this->hora_inicio,
-            'hora_fin' => $this->hora_inicio 
+            'hora_fin' => $this->hora_inicio
         ]);
 
         session()->flash('message',
         $this->id_visita ? '¡Actualización exitosa!' : '¡Alta Exitosa!');
-        
+
         $this->cerrarModal();
         // $this->limpiarCampos();
 

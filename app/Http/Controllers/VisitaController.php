@@ -24,14 +24,18 @@ class VisitaController extends Controller
 
 
 
-    public function index()
-    {
-        $visita = Visita::all();
 
-        // dd($visita);
 
-        return view('visita.index', compact('visita')); 
-    }
+     public function index()
+     {
+         $visita = Visita::all();
+
+         // dd($visita);
+
+         return view('visita.index', compact('visita'));
+     }
+
+
 
 
     /**
@@ -45,7 +49,7 @@ class VisitaController extends Controller
     {
         return view('visita.create');
     }
- 
+
 
     /**
      * Display the specified resource.

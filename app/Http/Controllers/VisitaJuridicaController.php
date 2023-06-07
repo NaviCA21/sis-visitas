@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\visita_juridica;
+use App\Models\Visita;
 use Illuminate\Http\Request;
 
 class VisitaJuridicaController extends Controller
@@ -12,9 +13,10 @@ class VisitaJuridicaController extends Controller
      */
     public function index()
     {
-        //
+        $visita = Visita::all();
+        // dd($visita);
+        return view('visita.indexjuridica', compact('visita'));
     }
-
     /**
      * Show the form for creating a new resource.
      */

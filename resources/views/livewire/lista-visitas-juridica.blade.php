@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @foreach ($visita as $visita)
-                        @if ($visita->visitante->TipoVisitante->tipo_visitante == 'Persona Natural')
+                        @if ($visita->visitante->TipoVisitante->tipo_visitante == 'Persona Juridica')
                         <tr>
                             <td class="border px-4 py-2 text-center">{{ $visita->periodo->fecha }}</td>
                             <td class="border px-4 py-2 text-center">{{ $visita->visitante->nombre }}
@@ -51,8 +51,7 @@
                                 {{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
                             <td class="border px-4 py-2 text-center">{{ $visita->asunto }}</td>
                             <td class="border px-4 py-2 text-center">
-                                <button wire:click="editar({{ $visita->id }})"
-                                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button>
+                                
                                 <form action="{{ route('visitas.destroy', $visita) }}" method="post"
                                     style="display: inline;" class="eliminar"> @csrf @method('delete') <button
                                         type="submit" class="btn btn-outline-danger btn-sm"><i
