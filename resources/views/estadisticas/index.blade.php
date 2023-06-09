@@ -24,7 +24,7 @@
                             <select class="form-control" id="filtro_mes" name="filtro_mes" onchange="submitForm()">
                                 <option value="">Todos los meses</option>
                                 @foreach($months as $month)
-                                <option value="{{ $month }}">{{ \Carbon\Carbon::parse($selectedYear . '-' . $month . '-01')->locale('es')->monthName }}</option>
+                                    <option value="{{ $month }}" {{ $month == $selectedMonth ? 'selected' : '' }}>{{ \Carbon\Carbon::parse($selectedYear . '-' . $month . '-01')->locale('es')->monthName }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -36,14 +36,14 @@
         </div>
     </div>
 
-    <script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(loadChart);
+
         function submitForm() {
             document.getElementById("filterForm").submit();
         }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            loadChart();
-        });
 
         function loadChart() {
             var selectedMonth = document.getElementById("filtro_mes").value;
@@ -54,43 +54,22 @@
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        // Renderizar el gráfico con los datos obtenidos
-                        // Puedes utilizar cualquier biblioteca de gráficos como Chart.js o Google Charts aquí
-                        // Ejemplo:
-                        var chartData = data.chartData;
-                        // ...
+                        drawChart(data.chartData);
                     })
                     .catch(error => {
                         console.error("Error al cargar los datos del gráfico:", error);
                     });
             }
         }
-    </script>
-@endsection
 
-
-
-
-@section('js')
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {packages: ['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Fecha');
-            data.addColumn('number', 'Visitas');
-
-            var chartData = @json($chartData);
-
-            data.addRows(chartData);
+        function drawChart(chartData) {
+            var data = google.visualization.arrayToDataTable(chartData);
 
             var options = {
                 title: 'Cantidad de Visitas',
                 chartArea: {width: '60%'},
                 hAxis: {
-                    title: 'Fecha',
+                    title: 'Tipo de visitante',
                     minValue: 0
                 },
                 vAxis: {
@@ -101,9 +80,5 @@
             var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
-
-        // Ejecutar la función drawChart al cambiar la opción de filtrado
-        document.getElementById('filtro_anio').addEventListener('change', drawChart);
-        document.getElementById('filtro_mes').addEventListener('change', drawChart);
     </script>
 @endsection

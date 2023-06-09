@@ -2,98 +2,99 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Estadisticas;
 use App\Models\Visita;
 use App\Models\Periodo;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstadisticasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
     public function index(Request $request)
     {
-
         // Obtener los años disponibles desde la base de datos
         $years = Periodo::select(DB::raw('YEAR(fecha) AS year'))
             ->distinct()
             ->pluck('year');
 
-            $selectedYear = $request->input('filtro_anio');
-            $months = Periodo::whereYear('fecha', $selectedYear)
-                ->select(DB::raw('MONTH(fecha) AS month_number'))
-                ->distinct()
-                ->orderBy('month_number')
-                ->pluck('month_number');
+        // Obtener el año seleccionado (por defecto, el primer año de la lista)
+        $selectedYear = $request->input('filtro_anio', $years->first());
 
+        // Obtener los meses disponibles para el año seleccionado
+        $months = Periodo::whereYear('fecha', $selectedYear)
+            ->select(DB::raw('MONTH(fecha) AS month_number'))
+            ->distinct()
+            ->orderBy('month_number')
+            ->pluck('month_number');
+
+        // Obtener el mes seleccionado (por defecto, el primer mes de la lista)
+        $selectedMonth = $request->input('filtro_mes', $months->first());
 
         // Obtener las visitas filtradas por año y mes seleccionados
-        $selectedMonth = $request->input('filtro_mes');
-        $visitas = Periodo::whereYear('fecha', $request->input('filtro_anio'))
-            ->whereMonth('fecha', $selectedMonth)
-            ->join('visitas', 'periodos.id', '=', 'visitas.periodo_id')
-            ->get();
+        $visitas = Visita::whereHas('periodo', function ($query) use ($selectedYear, $selectedMonth) {
+            $query->whereYear('fecha', $selectedYear)
+                ->whereMonth('fecha', $selectedMonth);
+        })->get();
 
+        // Contadores para personas naturales y personas jurídicas
+        $contadorPersonasNaturales = 0;
+        $contadorPersonasJuridicas = 0;
 
-        // Obtener los datos estadísticos para el gráfico
-        $chartData = [];
         foreach ($visitas as $visita) {
-            $date = Carbon::parse($visita->fecha)->format('Y-m-d');
-            $chartData[] = [$date, $visita->visitante->tipo_visitante];
+            if ($visita->visitante->tipo_visitante === 'Persona Natural') {
+                $contadorPersonasNaturales++;
+            } elseif ($visita->visitante->tipo_visitante === 'Persona Jurídica') {
+                $contadorPersonasJuridicas++;
+            }
         }
 
-        return view('estadisticas.index', compact('years', 'months', 'chartData', 'selectedYear'));
-    }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        // Preparar los datos para el gráfico
+        $chartData = [
+            ['Tipo de visitante', 'Visitas'],
+            ['Personas Naturales', $contadorPersonasNaturales],
+            ['Personas Jurídicas', $contadorPersonasJuridicas],
+        ];
+
+        return view('estadisticas.index', compact('years', 'months', 'selectedYear', 'selectedMonth', 'chartData'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Retrieve chart data as JSON.
      */
-    public function store(Request $request)
+    public function chartData(Request $request)
     {
-        //
-    }
+        $selectedYear = $request->input('filtro_anio');
+        $selectedMonth = $request->input('filtro_mes');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Estadisticas $estadisticas)
-    {
-        //
-    }
+        // Obtener las visitas filtradas por año y mes seleccionados
+        $visitas = Visita::whereHas('periodo', function ($query) use ($selectedYear, $selectedMonth) {
+            $query->whereYear('fecha', $selectedYear)
+                ->whereMonth('fecha', $selectedMonth);
+        })->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Estadisticas $estadisticas)
-    {
-        //
-    }
+        // Contadores para personas naturales y personas jurídicas
+        $contadorPersonasNaturales = 0;
+        $contadorPersonasJuridicas = 0;
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Estadisticas $estadisticas)
-    {
-        //
-    }
+        foreach ($visitas as $visita) {
+            if ($visita->visitante->tipo_visitante === 'Persona Natural') {
+                $contadorPersonasNaturales++;
+            } elseif ($visita->visitante->tipo_visitante === 'Persona Jurídica') {
+                $contadorPersonasJuridicas++;
+            }
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Estadisticas $estadisticas)
-    {
-        //
+        // Preparar los datos para el gráfico
+        $chartData = [
+            ['Tipo de visitante', 'Visitas'],
+            ['Personas Naturales', $contadorPersonasNaturales],
+            ['Personas Jurídicas', $contadorPersonasJuridicas],
+        ];
+
+        // Retornar los datos como respuesta JSON
+        dd($chartData);
+        // return response()->json(['chartData' => $chartData]);
     }
 }

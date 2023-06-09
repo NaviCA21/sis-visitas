@@ -51,7 +51,6 @@ class ListaVisitas extends Component
 
         return view('livewire.lista-visitas', compact('visita'));
     }
-
     public function abrirModal()
     {
         $this->modal = true;
@@ -127,5 +126,4 @@ class ListaVisitas extends Component
         // $this->limpiarCampos();
 
     }
-
 }

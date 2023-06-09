@@ -1,7 +1,6 @@
 <x-slot name="header">
     <h1 class="text-gray-900">CRUD con Laravel 8 y Livewire</h1>
 </x-slot>
-
 <div class="py-12">
     <a class="btn btn-info mb-3" href="{{ route('visitas.create') }}">Registrar Visita</a>
     <div class="max-w-7xl mx-auto sm:px6 lg:px-8">
@@ -21,8 +20,11 @@
             {{-- <button wire:click="crear()" class="bg-green-500 hover:bg-green-600 font-bold py-2 px-4 my-3" >Nuevo</button> --}}
             <a class="btn btn-info mb-3" href="{{ route('visitas.index') }}">Persona natural</a>
             <a class="btn btn-info mb-3" href="{{ route('visitasjuridica.index') }}">Persona juridica</a>
+
+
+
             @if ($modal)
-                @include('livewire.editarmodal')
+                @include('livewire.editarmodaljuridica')
             @endif
 
             <table class="table-fixed w-full">

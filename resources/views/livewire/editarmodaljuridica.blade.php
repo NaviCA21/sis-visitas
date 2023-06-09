@@ -100,68 +100,71 @@
 
                         <input type="hidden" value="{{ $dayOfWeek = date("l", strtotime($fecha_live_wire));  }}">
 
-                        @if($dayOfWeek == 'Monday' || $dayOfWeek == 'Friday')
+                        @if($dayOfWeek == 'Tuesday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
 
-                                    <select id="hora_inicio" name="hora_inicio" class="form-control" wire:model="hora_inicio">
-                                        @foreach($horarios_libres as $horario)
+                                    <select id="hora_inicio" name="hora_inicio" class="form-control">
+
+                                        @foreach($horarios_libresjuridica as $horario)
                                             <option value="{{$horario}}">{{$horario}}</option>
 
                                         @endforeach
+
                                     </select>
 
                                 </div>
 
                             </div>
 
-                            {{-- <h2>{{implode(', ', $horarios_libres)}}</h2> --}}
-
-                        @elseif($dayOfWeek == 'Wednesday' )
+                        @elseif($dayOfWeek == 'Thursday')
 
                             <div class="form-group col-md-4 mt-2">
                                 <label>Horario</label>
 
                                 <div class="row justify-content-center">
-                                    <select id="hora_inicio" name="hora_inicio" class="form-control" wire:model="hora_inicio">
-                                        @foreach($horarios_libres as $horario)
-                                                <option value="{{$horario}}">{{$horario}}</option>
+
+                                    <select id="hora_inicio" name="hora_inicio" class="form-control">
+
+                                        @foreach($horarios_libresjuridica as $horario)
+                                            <option value="{{$horario}}">{{$horario}}</option>
 
                                         @endforeach
+
                                     </select>
 
                                 </div>
 
                             </div>
 
-                        @elseif($dayOfWeek == 'Tuesday' || $dayOfWeek == 'Thursday')
+                        @elseif($dayOfWeek == 'Monday' || $dayOfWeek == 'Wednesday' || $dayOfWeek == 'Friday')
                             <div class="form-group col-md-4 mt-2">
-                                <label>No se puede reservar ni sabados ni domingos.</label>
-
+                                <label>AVISO.</label>
                                 <div class="row justify-content-center">
-                                    MARTES Y JUEVES RESERVADO PARA PERSONA JURIDICA.
+                                    LUNES, MARTES Y MIERCOLES RESERVADO PARA PERSONA NATURAL.
                                 </div>
 
                             </div>
 
                         @else
                             <div class="form-group col-md-4 mt-2">
-                                <label>No se puede reservar ni sabados ni domingos.</label>
+                                <label>AVISO.</label>
 
                                 <div class="row justify-content-center">
-                                    MARTES Y JUEVES RESERVADO PARA PERSONA JURIDICA.
+                                    SABADO Y DOMINGO NO SE DEBE RESERVAR.
                                 </div>
 
                             </div>
 
                         @endif
 
+
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                                <button wire:click="actualizar()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-purple-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-purple-800 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">Guardar</button>
+                                <button wire:click="actualizarjuridica()" type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-purple-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-purple-800 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">Guardar</button>
                             </span>
 
                             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
