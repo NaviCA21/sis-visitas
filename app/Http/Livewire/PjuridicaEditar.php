@@ -49,7 +49,7 @@ class PnaturalEditar extends Component
                 )
                 ->get();
 
-        return view('livewire.pnatural-editar', compact('horario', 'horarios_libres'));
+        return view('livewire.pjuridica-editar', compact('horario', 'horarios_libres'));
     }
 
     public function editar($id){

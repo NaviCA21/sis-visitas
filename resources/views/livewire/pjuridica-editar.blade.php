@@ -1,4 +1,4 @@
 <div>
-    <h1>gaaaa</h1>
+    <h1>Gaaaa</h1>
 </div>
 {{ $visitas_datos }}

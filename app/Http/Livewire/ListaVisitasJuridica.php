@@ -51,4 +51,79 @@ class ListaVisitasJuridica extends Component
 
         return view('livewire.lista-visitas-juridica', compact('visita'));
     }
+    public function abrirModal()
+    {
+        $this->modal = true;
+    }
+
+    public function cerrarModal()
+    {
+        $this->modal = false;
+    }
+
+    public function editar($id)
+    {
+        // dd('hola');
+        $visita = Visita::findOrFail($id);
+        $this->id_visita = $id;
+        $this->asunto = $visita->asunto;
+
+        $this->id_visitante = $visita->visitante_id;
+        $this->id_periodo = $visita->periodo_id;
+        //relacion con tablas
+        $visitante = Visitante::findOrFail($visita->visitante_id);
+        $periodo = Periodo::findOrFail($visita->periodo_id);
+
+        // visitante
+        $this->nombre = $visitante->nombre;
+        $this->a_paterno = $visitante->a_paterno;
+        $this->a_materno = $visitante->a_materno;
+        $this->dni = $visitante->dni;
+        $this->institucion = $visitante->institucion;
+        $this->telefono = $visitante->telefono;
+        $this->num_visitantes = $visitante->num_visitantes;
+
+        // periodo
+        $this->fecha = $periodo->fecha;
+        $this->fecha_live_wire = $periodo->fecha;
+
+        $this->hora_inicio = $periodo->hora_inicio;
+
+        $this->abrirModal();
+
+    }
+
+    public function actualizar()
+    {
+
+        Visita::updateOrCreate(['id'=>$this->id_visita],
+        [
+            'asunto' => $this->asunto
+        ]);
+
+        Visitante::updateOrCreate(['id'=>$this->id_visitante],
+        [
+            'nombre' => $this->nombre,
+            'a_paterno' => $this->a_paterno,
+            'a_materno' => $this->a_materno,
+            'dni' => $this->dni,
+            'institucion' => $this->institucion,
+            'telefono' => $this->telefono,
+            'num_visitantes' => $this->num_visitantes
+        ]);
+
+        Periodo::updateOrCreate(['id'=>$this->id_periodo],
+        [
+            'fecha' => $this->fecha_live_wire,
+            'hora_inicio' => $this->hora_inicio,
+            'hora_fin' => $this->hora_inicio
+        ]);
+
+        session()->flash('message',
+        $this->id_visita ? '¡Actualización exitosa!' : '¡Alta Exitosa!');
+
+        $this->cerrarModal();
+        // $this->limpiarCampos();
+
+    }
 }
