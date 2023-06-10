@@ -26,31 +26,24 @@ class ListaVisitasJuridica extends Component
 
         $lista_horas_ocupadas = Periodo::where('fecha', '=', $this->fecha_live_wire)->get();
 
-
-        $horarios_totales_mananitas = array('09:00:00', '10:00:00', '11:00:00');
-        $horarios_totales_tardecitas = array('14:00:00', '15:00:00');
+        $horarios_totales_mananitas = ['09:00:00', '10:00:00', '11:00:00'];
+        $horarios_totales_tardecitas = ['14:00:00', '15:00:00'];
 
         $dayOfWeek = date("l", strtotime($this->fecha_live_wire));
 
-        $horarios_ocupados = array();
+        $horarios_ocupados = $lista_horas_ocupadas->pluck('hora_inicio')->toArray();
 
-        foreach ($lista_horas_ocupadas as $item) {
-            array_push($horarios_ocupados, $item->hora_inicio);
-        }
-
-        if ($dayOfWeek == 'Tuesday') {
-            // dd('Tuesday');
+        if ($dayOfWeek === 'Tuesday') {
             $this->horarios_libresjuridica = array_diff($horarios_totales_mananitas, $horarios_ocupados);
-        } else if ($dayOfWeek == 'Thursday') {
-            // dd('Thursday');
+        } elseif ($dayOfWeek === 'Thursday') {
             $this->horarios_libresjuridica = array_diff($horarios_totales_tardecitas, $horarios_ocupados);
         } else {
-            // dd('tilin');
-            $this->horarios_libresjuridica = array('00:00:00');
+            $this->horarios_libresjuridica = ['00:00:00'];
         }
 
-        return view('livewire.lista-visitas-juridica', compact('visita','lista_horas_ocupadas'));
+        return view('livewire.lista-visitas-juridica', compact('visita', 'lista_horas_ocupadas'));
     }
+
     public function abrirModal()
     {
         $this->modal = true;
@@ -63,18 +56,16 @@ class ListaVisitasJuridica extends Component
 
     public function editar($id)
     {
-        // dd('hola');
         $visita = Visita::findOrFail($id);
         $this->id_visita = $id;
         $this->asunto = $visita->asunto;
 
         $this->id_visitante = $visita->visitante_id;
         $this->id_periodo = $visita->periodo_id;
-        //relacion con tablas
+
         $visitante = Visitante::findOrFail($visita->visitante_id);
         $periodo = Periodo::findOrFail($visita->periodo_id);
 
-        // visitante
         $this->nombre = $visitante->nombre;
         $this->a_paterno = $visitante->a_paterno;
         $this->a_materno = $visitante->a_materno;
@@ -83,7 +74,6 @@ class ListaVisitasJuridica extends Component
         $this->telefono = $visitante->telefono;
         $this->num_visitantes = $visitante->num_visitantes;
 
-        // periodo
         $this->fecha = $periodo->fecha;
         $this->fecha_live_wire = $periodo->fecha;
 
@@ -93,43 +83,45 @@ class ListaVisitasJuridica extends Component
     }
 
     public function actualizarjuridica()
-    {
-        Visita::updateOrCreate(
-            ['id' => $this->id_visita],
-            [
-                'asunto' => $this->asunto
-            ]
-        );
-
-        Visitante::updateOrCreate(
-            ['id' => $this->id_visitante],
-            [
-                'nombre' => $this->nombre,
-                'a_paterno' => $this->a_paterno,
-                'a_materno' => $this->a_materno,
-                'dni' => $this->dni,
-                'institucion' => $this->institucion,
-                'telefono' => $this->telefono,
-                'num_visitantes' => $this->num_visitantes
-            ]
-        );
-        $this->hora_inicio = $this->horarios_libresjuridica; // Asignar el valor de hora_inicio seleccionado
-        Periodo::updateOrCreate(
-            ['id' => $this->id_periodo],
-            [
-                'fecha' => $this->fecha_live_wire,
-                'hora_inicio' => $this->hora_inicio,
-                'hora_fin' => $this->hora_inicio
-            ]
-        );
-
-        session()->flash(
-            'message',
-            $this->id_visita ? '¡Actualización exitosa!gaaa' : '¡Alta Exitosa!'
-        );
-
-        $this->cerrarModal();
-        // $this->limpiarCampos();
-
+{
+    if (!in_array($this->hora_inicio, $this->horarios_libresjuridica)) {
+        $this->hora_inicio = reset($this->horarios_libresjuridica);
     }
+
+    $visita = Visita::updateOrCreate(
+        ['id' => $this->id_visita],
+        ['asunto' => $this->asunto]
+    );
+
+    $visitante = Visitante::updateOrCreate(
+        ['id' => $this->id_visitante],
+        [
+            'nombre' => $this->nombre,
+            'a_paterno' => $this->a_paterno,
+            'a_materno' => $this->a_materno,
+            'dni' => $this->dni,
+            'institucion' => $this->institucion,
+            'telefono' => $this->telefono,
+            'num_visitantes' => $this->num_visitantes
+        ]
+    );
+
+    $periodo = Periodo::updateOrCreate(
+        ['id' => $this->id_periodo],
+        [
+            'fecha' => $this->fecha_live_wire,
+            'hora_inicio' => $this->hora_inicio,
+            'hora_fin' => $this->hora_inicio
+        ]
+    );
+
+    if ($visita && $visitante && $periodo) {
+        session()->flash('message', $this->id_visita ? '¡Actualización exitosa!' : '¡Alta Exitosa!');
+    } else {
+        session()->flash('message', 'Ha ocurrido un error al guardar los cambios.');
+    }
+
+    $this->cerrarModal();
+}
+
 }
