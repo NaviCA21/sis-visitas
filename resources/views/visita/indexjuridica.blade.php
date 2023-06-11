@@ -2,7 +2,7 @@
 
 
 @section('content_header')
-    <h1 class="text-center font-weight-bold text-uppercase">Lista de visitas</h1>
+    <h1 class="text-center font-weight-bold text-uppercase">REGISTRO DE VISITAS DE PERSONA JURIDICA</h1>
     @livewireStyles
 @stop
 
