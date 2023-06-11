@@ -83,18 +83,14 @@ class ListaVisitasJuridica extends Component
     }
 
     public function actualizarjuridica()
-{
-    if (!in_array($this->hora_inicio, $this->horarios_libresjuridica)) {
-        $this->hora_inicio = reset($this->horarios_libresjuridica);
-    }
+    {
 
-    $visita = Visita::updateOrCreate(
-        ['id' => $this->id_visita],
-        ['asunto' => $this->asunto]
-    );
+        Visita::updateOrCreate(['id'=>$this->id_visita],
+        [
+            'asunto' => $this->asunto
+        ]);
 
-    $visitante = Visitante::updateOrCreate(
-        ['id' => $this->id_visitante],
+        Visitante::updateOrCreate(['id'=>$this->id_visitante],
         [
             'nombre' => $this->nombre,
             'a_paterno' => $this->a_paterno,
@@ -103,25 +99,24 @@ class ListaVisitasJuridica extends Component
             'institucion' => $this->institucion,
             'telefono' => $this->telefono,
             'num_visitantes' => $this->num_visitantes
-        ]
-    );
+        ]);
 
-    $periodo = Periodo::updateOrCreate(
-        ['id' => $this->id_periodo],
+        Periodo::updateOrCreate(['id'=>$this->id_periodo],
         [
             'fecha' => $this->fecha_live_wire,
             'hora_inicio' => $this->hora_inicio,
             'hora_fin' => $this->hora_inicio
-        ]
-    );
+        ]);
 
-    if ($visita && $visitante && $periodo) {
-        session()->flash('message', $this->id_visita ? '¡Actualización exitosa!' : '¡Alta Exitosa!');
-    } else {
-        session()->flash('message', 'Ha ocurrido un error al guardar los cambios.');
+        session()->flash('message',
+        $this->id_visita ? '¡Actualización exitosa!' : '¡Alta Exitosa!');
+
+        $this->cerrarModal();
+        // $this->limpiarCampos();
+
     }
-
-    $this->cerrarModal();
-}
-
+    public function limpiarCampos()
+    {
+        $this->hora_inicio = '';
+    }
 }
