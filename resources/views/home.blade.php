@@ -17,45 +17,37 @@
 </div>
 <div id='calendario'></div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title" style="font-size: 2em; font-weight: bold;">Tus visitas de hoy
-                    {{ date('d-m-y') }}</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="info-box bg-gradient-primary">
-                            <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        @foreach ($notificaciones as $noti)
-                                        <tr>
-                                            <td>
-                                                <h2>Visita {{$num++}}</h2>
-                                            </td>
-                                            <td>
-                                                <h2>a la hora {{$noti->hora_inicio}}</h2>
-                                            </td>
-                                            <td>
-                                                <h2>con {{$noti->nombre}} {{$noti->a_paterno}}
-                                                    {{$noti->a_materno}}</h2>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+              <h3 class="card-title" style="font-size: 2em; font-weight: bold;">Tus visitas de hoy {{ date('d-m-y') }}</h3>
+              </div>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="info-box bg-gradient-primary">
+                              <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+                              <table class="table">
+
+                                <tbody>
+                                    @foreach ( $notificaciones as $noti )
+                                    <tr>
+                                        <td><h2>Visita {{$num++}}</h2></td>
+                                        <td><h2>a la hora {{$noti->hora_inicio}}</h2></td>
+                                        <td><h2>con {{$noti->nombre}} {{$noti->a_paterno}} {{$noti->a_materno}}</h2></td>
+                                    </tr>
+
+                                    @endforeach
+                                </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 @endsection
 
 @push('css')
@@ -78,14 +70,13 @@
         animation: blink 2s ease-in-out infinite alternate;
     }
 
-    @keyframes blink {
-        from {
-            opacity: 1;
-        }
-
-        to {
-            opacity: 0.2;
-        }
+  @keyframes blink {
+    from {
+      opacity: 1;
     }
+    to {
+      opacity: 0.2;
+    }
+  }
 </style>
 @endpush
