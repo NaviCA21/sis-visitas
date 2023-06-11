@@ -18,16 +18,16 @@
       <table class="table table table-striped" id="visita">
           <thead class="thead-dark">
             <tr>
-              <th>Fecha</th>
-              <th>Visitante</th>
-              <th>DNI o RUC</th>
-              <th>Institucion</th>
-              <th>Telefono</th>
-              <th>Horario</th>
-              <th>N° Visitantes</th>
-              <th>Tipo Visitante</th>
-              <th>Asunto</th>
-            </tr>
+              <th class="px-4 py-2">Fecha</th>
+              <th class="px-4 py-2">Visitante</th>
+              <th class="px-4 py-2">DNI</th>
+              <th class="px-4 py-2">Institución</th>
+              <th class="px-4 py-2">Teléfono</th>
+              <th class="px-4 py-2">Horario</th>
+              <th class="px-4 py-2">N° Visitantes</th>
+              <th class="px-4 py-2">Tipo Visitante</th>
+              <th class="px-4 py-2">Asunto</th>
+          </tr>
           </thead>
           <tbody>
             @foreach ($visitas as $visita)
@@ -114,13 +114,13 @@
             {
                 extend: 'excelHtml5',
                 exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ],
                 }
             },
             {
                 extend: 'pdfHtml5',
                 exportOptions: {
-                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ],
                 }
             },
         ],
