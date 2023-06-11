@@ -108,6 +108,7 @@
                                 <div class="row justify-content-center">
 
                                     <select id="hora_inicio" name="hora_inicio" class="form-control" wire:model="hora_inicio">
+                                        <option>Seleccione el horario</option>
                                         @foreach($horarios_libres as $horario)
                                             <option value="{{$horario}}">{{$horario}}</option>
 
@@ -127,6 +128,7 @@
 
                                 <div class="row justify-content-center">
                                     <select id="hora_inicio" name="hora_inicio" class="form-control" wire:model="hora_inicio">
+                                        <option>Seleccione el horario</option>
                                         @foreach($horarios_libres as $horario)
                                                 <option value="{{$horario}}">{{$horario}}</option>
 

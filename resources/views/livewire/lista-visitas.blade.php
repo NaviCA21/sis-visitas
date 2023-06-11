@@ -23,12 +23,12 @@
                     <a class="btn btn-info" href="{{ route('visitasjuridica.index') }}">Persona juridica</a>
                 </div>
             </div>
-            
-                     
+
+
             @if ($modal)
                 @include('livewire.editarmodal')
             @endif
-            
+
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -63,17 +63,20 @@
                                         <td class="border px-4 py-2">{{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
                                         <td class="border px-4 py-2">{{ $visita->asunto }}</td>
                                         <td class="border px-4 py-2">
-                                            <button wire:click="editar({{ $visita->id }})"
-                                                
-                                                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4">Editar</button>
-                                            <form action="{{ route('visitas.destroy', $visita) }}" method="post"
-                                                style="display: inline;" class="eliminar">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                    <i class="fas fa-lg fa-trash"></i>
+                                            <div class="d-flex align-items-center">
+                                                <button wire:click="editar({{ $visita->id }})" class="btn btn-primary btn-sm mr-2">
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
-                                            </form>
+
+                                                <form action="{{ route('visitas.destroy', $visita) }}" method="post" style="display: inline;">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+
                                         </td>
                                     </tr>
                                     @else
