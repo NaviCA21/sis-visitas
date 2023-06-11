@@ -54,7 +54,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Teléfono</label>
                             <input type="text" class="form-control" id="telefono" name="telefono" value="{{ old('telefono') }} " maxlength="9"
-                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Ingrese el número de teléfono" required>
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Ingrese su numero de telefono">
                             @error('telefono')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -78,7 +78,7 @@
                             @error('asunto')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
-                        </div> 
+                        </div>
 
                         <div class="form-group col-md-4 mt-2">
                             <label>Fecha</label>
@@ -159,7 +159,7 @@
 
 
                         @endif
-  
+
                     </div>
 
                     <div class="row justify-content-center">

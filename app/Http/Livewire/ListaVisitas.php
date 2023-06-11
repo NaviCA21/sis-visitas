@@ -126,4 +126,8 @@ class ListaVisitas extends Component
         // $this->limpiarCampos();
 
     }
+    public function limpiarCampos()
+    {
+        $this->hora_inicio = '';
+    }
 }

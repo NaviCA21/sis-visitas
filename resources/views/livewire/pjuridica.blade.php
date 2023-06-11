@@ -9,7 +9,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"
-                                value="{{ old('nombre') }}">
+                                value="{{ old('nombre') }}" placeholder="Ingrese su nombre">
                             @error('nombre')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -17,7 +17,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Apellido Paterno</label>
                             <input type="text" class="form-control" name="a_paterno" id="a_paterno"
-                                value="{{ old('a_paterno') }}">
+                                value="{{ old('a_paterno') }}" placeholder="ingrese su apellido paterno">
                             @error('a_paterno')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -26,7 +26,7 @@
                         <div class="form-group col-md-4 mt-2 ">
                             <label>Apellido Materno</label>
                             <input type="text" class="form-control" name="a_materno" id="a_materno"
-                                value="{{ old('a_materno') }}">
+                                value="{{ old('a_materno') }}" placeholder="ingrese su apellido materno">
                             @error('a_materno')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -34,8 +34,9 @@
 
                         <div class="form-group col-md-4 mt-2">
                             <label>RUC</label>
-                            <input type="text" class="form-control" id="inputEmail4" name="dni"
-                                value="{{ old('dni') }}">
+                            <input type="text" class="form-control" id="inputEmail4" name="ruc"
+                                value="{{ old('dni') }}" maxlength="11" placeholder="Ingrese el su RUC (11 dígitos)"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                             @error('dni')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -43,7 +44,7 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Entidad del visitantes</label>
                             <input type="text" class="form-control" id="inputEmail4" name="institucion"
-                                value="{{ old('institucion') }}">
+                                value="{{ old('institucion') }}" placeholder="Ingrese la entidad del visitante">
                             @error('institucion')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -51,7 +52,8 @@
                         <div class="form-group col-md-4 mt-2">
                             <label>Teléfono</label>
                             <input type="tel" class="form-control" id="telefono" name="telefono"
-                                placeholder="Ingrese su número de teléfono" value="{{ old('telefono') }}">
+                                placeholder="Ingrese su número de teléfono" value="{{ old('telefono') }}" maxlength="9"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Ingrese el número de teléfono" required>
                             @error('telefono')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -68,7 +70,7 @@
                         </div>
 
 
-                        
+
                         <div class="form-group col-md-4 mt-2">
                             <label>Asunto</label>
                             <input type="text" class="form-control" name="asunto"
@@ -79,7 +81,7 @@
                             @enderror
                         </div>
 
-                        
+
                         <div class="form-group col-md-4 mt-2">
                             <label>Fecha</label>
 
@@ -160,8 +162,8 @@
 
                             </div>
 
-                        @endif  
-                        
+                        @endif
+
                     </div>
 
                     <div class="row justify-content-center">
