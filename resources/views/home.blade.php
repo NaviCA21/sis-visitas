@@ -8,7 +8,8 @@
     <br>
     <div class="mt-4 text-center">
         <div class="btn-group" role="group" aria-label="Manuales">
-            <a href="#" class="btn btn-primary btn-lg mr-4"><i class="fas fa-book"></i> Manual de Usuario</a>
+            <a href="{{ asset('docs/manual_usuario.pdf') }}" class="btn btn-primary btn-lg mr-4" download><i
+                class="fas fa-book"></i> Manual de Usuario</a>
             <a href="{{ asset('docs/manual_administrador.pdf') }}" class="btn btn-primary btn-lg mr-4" download><i
                     class="fas fa-book"></i> Manual de Administrador</a>
         </div>
