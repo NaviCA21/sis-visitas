@@ -38,7 +38,7 @@
                                 <tr>
                                     <th class="px-4 py-2">Fecha</th>
                                     <th class="px-4 py-2">Visitante</th>
-                                    <th class="px-4 py-2">DNI</th>
+                                    <th class="px-4 py-2">RUC</th>
                                     <th class="px-4 py-2">Institución</th>
                                     <th class="px-4 py-2">Teléfono</th>
                                     <th class="px-4 py-2">Horario</th>

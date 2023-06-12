@@ -34,13 +34,14 @@
 
                         <div class="form-group col-md-4 mt-2">
                             <label>RUC</label>
-                            <input type="text" class="form-control" id="inputEmail4" name="ruc"
-                                value="{{ old('dni') }}" maxlength="11" placeholder="Ingrese el su RUC (11 dígitos)"
+                            <input type="text" class="form-control" id="inputEmail4" name="dni"
+                                value="{{ old('dni') }}" maxlength="11" placeholder="Ingrese su RUC (11 dígitos)"
                                 oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                             @error('dni')
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+
                         <div class="form-group col-md-4 mt-2">
                             <label>Entidad del visitantes</label>
                             <input type="text" class="form-control" id="inputEmail4" name="institucion"
@@ -168,7 +169,7 @@
 
                     <div class="row justify-content-center">
                         <a href="{{ route('visitas.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
-                        <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
+                        <button type="submit" class="btn btn-success m-3 col-md-3">Registrar</button>
                     </div>
 
                 </form>

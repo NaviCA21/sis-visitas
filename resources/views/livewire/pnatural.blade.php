@@ -164,7 +164,7 @@
 
                     <div class="row justify-content-center">
                         <a href="{{ route('visitas.index') }}" class="btn btn-info m-3 col-md-3 p-1">Regresar</a>
-                        <button type="submit" class="btn btn-success m-3 col-md-3">Enviar</button>
+                        <button type="submit" class="btn btn-success m-3 col-md-3">Registrar</button>
                     </div>
 
                 </form>
