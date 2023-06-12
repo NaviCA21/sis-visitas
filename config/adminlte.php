@@ -394,9 +394,9 @@ return [
             ],
         ],
         [
-            'text' => 'Estadisticas',
-            'route'  => 'estadisticas.index',
-            'icon' => 'fas fa-fw fa-user',
+            // 'text' => 'Estadisticas',
+            // 'route'  => 'estadisticas.index',
+            // 'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'ADMINISTRADOR'],
         [

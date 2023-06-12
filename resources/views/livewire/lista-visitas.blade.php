@@ -35,6 +35,7 @@
                         <table class="table table-striped" id="visita">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th class="px-4 py-2">Acciones</th>
                                     <th class="px-4 py-2">Fecha</th>
                                     <th class="px-4 py-2">Visitante</th>
                                     <th class="px-4 py-2">DNI</th>
@@ -44,24 +45,12 @@
                                     <th class="px-4 py-2">N° Visitantes</th>
                                     <th class="px-4 py-2">Tipo Visitante</th>
                                     <th class="px-4 py-2">Asunto</th>
-                                    <th class="px-4 py-2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($visita as $visita)
                                     @if ($visita->visitante->TipoVisitante->tipo_visitante == 'Persona Natural')
                                     <tr>
-                                        <td class="border px-4 py-2">{{ $visita->periodo->fecha }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->nombre }}
-                                            {{ $visita->visitante->a_paterno }} {{ $visita->visitante->a_materno }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->dni }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->institucion }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->telefono }}</td>
-                                        <td class="border px-4 py-2">
-                                            {{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->num_visitantes }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
-                                        <td class="border px-4 py-2">{{ $visita->asunto }}</td>
                                         <td class="border px-4 py-2">
                                             <div class="d-flex align-items-center">
                                                 <button wire:click="editar({{ $visita->id }})" class="btn btn-primary btn-sm mr-2">
@@ -78,6 +67,18 @@
                                             </div>
 
                                         </td>
+                                        <td class="border px-4 py-2">{{ $visita->periodo->fecha }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->nombre }}
+                                            {{ $visita->visitante->a_paterno }} {{ $visita->visitante->a_materno }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->dni }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->institucion }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->telefono }}</td>
+                                        <td class="border px-4 py-2">
+                                            {{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->num_visitantes }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
+                                        <td class="border px-4 py-2">{{ $visita->asunto }}</td>
+                                        
                                     </tr>
                                     @else
 

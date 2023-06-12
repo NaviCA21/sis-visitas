@@ -36,6 +36,7 @@
                         <table class="table table-striped" id="visita">
                             <thead class="thead-dark">
                                 <tr>
+                                    <th class="px-4 py-2">Acciones</th>
                                     <th class="px-4 py-2">Fecha</th>
                                     <th class="px-4 py-2">Visitante</th>
                                     <th class="px-4 py-2">RUC</th>
@@ -45,25 +46,12 @@
                                     <th class="px-4 py-2">N° Visitantes</th>
                                     <th class="px-4 py-2">Tipo Visitante</th>
                                     <th class="px-4 py-2">Asunto</th>
-                                    <th class="px-4 py-2">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($visita as $visita)
                                     @if ($visita->visitante->TipoVisitante->tipo_visitante == 'Persona Juridica')
                                     <tr>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->periodo->fecha }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->nombre }}
-                                            {{ $visita->visitante->a_paterno }} {{ $visita->visitante->a_materno }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->dni }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->institucion }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->telefono }}</td>
-                                        <td class="border px-4 py-2 text-center">
-                                            {{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->num_visitantes }}</td>
-                                        <td class="border px-4 py-2 text-center">
-                                            {{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
-                                        <td class="border px-4 py-2 text-center">{{ $visita->asunto }}</td>
                                         <td class="border px-4 py-2 text-center">
 
                                             <div class="d-flex align-items-center">
@@ -81,6 +69,19 @@
                                             </div>
 
                                         </td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->periodo->fecha }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->nombre }}
+                                            {{ $visita->visitante->a_paterno }} {{ $visita->visitante->a_materno }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->dni }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->institucion }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->telefono }}</td>
+                                        <td class="border px-4 py-2 text-center">
+                                            {{ $visita->periodo->hora_inicio . ' - ' . $visita->periodo->hora_fin }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->visitante->num_visitantes }}</td>
+                                        <td class="border px-4 py-2 text-center">
+                                            {{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
+                                        <td class="border px-4 py-2 text-center">{{ $visita->asunto }}</td>
+                                        
                                     </tr>
                                     @else
 
