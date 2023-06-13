@@ -81,7 +81,7 @@
                                         <td class="border px-4 py-2 text-center">
                                             {{ $visita->visitante->TipoVisitante->tipo_visitante }}</td>
                                         <td class="border px-4 py-2 text-center">{{ $visita->asunto }}</td>
-                                        
+
                                     </tr>
                                     @else
 

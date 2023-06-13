@@ -51,6 +51,12 @@ class ListaVisitas extends Component
 
         return view('livewire.lista-visitas', compact('visita'));
     }
+
+    public function crear(){
+
+        $this->abrirModal();
+    }
+
     public function abrirModal()
     {
         $this->modal = true;
@@ -70,7 +76,7 @@ class ListaVisitas extends Component
 
         $this->id_visitante = $visita->visitante_id;
         $this->id_periodo = $visita->periodo_id;
-        //relacion con tablas
+        // relacion con tablas
         $visitante = Visitante::findOrFail($visita->visitante_id);
         $periodo = Periodo::findOrFail($visita->periodo_id);
 
